@@ -1,0 +1,12 @@
+C:\Users\kardavani.POUYAANDISHAN\Dropbox\02 - Project\Diamond\Diamond.Api\Diamond.Job\obj\Debug\net6.0\Diamond.Job.csproj.AssemblyReference.cache
+C:\Users\kardavani.POUYAANDISHAN\Dropbox\02 - Project\Diamond\Diamond.Api\Diamond.Job\obj\Debug\net6.0\Diamond.Job.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\kardavani.POUYAANDISHAN\Dropbox\02 - Project\Diamond\Diamond.Api\Diamond.Job\obj\Debug\net6.0\Diamond.Job.AssemblyInfoInputs.cache
+C:\Users\kardavani.POUYAANDISHAN\Dropbox\02 - Project\Diamond\Diamond.Api\Diamond.Job\obj\Debug\net6.0\Diamond.Job.AssemblyInfo.cs
+C:\Users\kardavani.POUYAANDISHAN\Dropbox\02 - Project\Diamond\Diamond.Api\Diamond.Job\obj\Debug\net6.0\Diamond.Job.csproj.CoreCompileInputs.cache
+C:\Users\kardavani.POUYAANDISHAN\Dropbox\02 - Project\Diamond\Diamond.Api\Diamond.Job\bin\Debug\net6.0\Diamond.Job.deps.json
+C:\Users\kardavani.POUYAANDISHAN\Dropbox\02 - Project\Diamond\Diamond.Api\Diamond.Job\bin\Debug\net6.0\Diamond.Job.dll
+C:\Users\kardavani.POUYAANDISHAN\Dropbox\02 - Project\Diamond\Diamond.Api\Diamond.Job\bin\Debug\net6.0\ref\Diamond.Job.dll
+C:\Users\kardavani.POUYAANDISHAN\Dropbox\02 - Project\Diamond\Diamond.Api\Diamond.Job\bin\Debug\net6.0\Diamond.Job.pdb
+C:\Users\kardavani.POUYAANDISHAN\Dropbox\02 - Project\Diamond\Diamond.Api\Diamond.Job\obj\Debug\net6.0\Diamond.Job.dll
+C:\Users\kardavani.POUYAANDISHAN\Dropbox\02 - Project\Diamond\Diamond.Api\Diamond.Job\obj\Debug\net6.0\ref\Diamond.Job.dll
+C:\Users\kardavani.POUYAANDISHAN\Dropbox\02 - Project\Diamond\Diamond.Api\Diamond.Job\obj\Debug\net6.0\Diamond.Job.pdb

@@ -1,0 +1,36 @@
+C:\Users\kardavani.POUYAANDISHAN\Dropbox\02 - Project\Diamond\Diamond.Api\Diamond.Job\bin\Debug\net6.0\Diamond.Jobs.deps.json
+C:\Users\kardavani.POUYAANDISHAN\Dropbox\02 - Project\Diamond\Diamond.Api\Diamond.Job\bin\Debug\net6.0\Diamond.Jobs.dll
+C:\Users\kardavani.POUYAANDISHAN\Dropbox\02 - Project\Diamond\Diamond.Api\Diamond.Job\bin\Debug\net6.0\Diamond.Jobs.pdb
+C:\Users\kardavani.POUYAANDISHAN\Dropbox\02 - Project\Diamond\Diamond.Api\Diamond.Job\obj\Debug\net6.0\Diamond.Jobs.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\kardavani.POUYAANDISHAN\Dropbox\02 - Project\Diamond\Diamond.Api\Diamond.Job\obj\Debug\net6.0\Diamond.Jobs.AssemblyInfoInputs.cache
+C:\Users\kardavani.POUYAANDISHAN\Dropbox\02 - Project\Diamond\Diamond.Api\Diamond.Job\obj\Debug\net6.0\Diamond.Jobs.AssemblyInfo.cs
+C:\Users\kardavani.POUYAANDISHAN\Dropbox\02 - Project\Diamond\Diamond.Api\Diamond.Job\obj\Debug\net6.0\Diamond.Jobs.csproj.CoreCompileInputs.cache
+C:\Users\kardavani.POUYAANDISHAN\Dropbox\02 - Project\Diamond\Diamond.Api\Diamond.Job\obj\Debug\net6.0\Diamond.Jobs.dll
+C:\Users\kardavani.POUYAANDISHAN\Dropbox\02 - Project\Diamond\Diamond.Api\Diamond.Job\obj\Debug\net6.0\ref\Diamond.Jobs.dll
+C:\Users\kardavani.POUYAANDISHAN\Dropbox\02 - Project\Diamond\Diamond.Api\Diamond.Job\obj\Debug\net6.0\Diamond.Jobs.pdb
+C:\Users\kardavani.POUYAANDISHAN\Dropbox\02 - Project\Diamond\Diamond.Api\Diamond.Job\obj\Debug\net6.0\Diamond.Jobs.csproj.AssemblyReference.cache
+C:\Users\kardavani.POUYAANDISHAN\Dropbox\02 - Project\Diamond\Diamond.Api\Diamond.Job\obj\Debug\net6.0\refint\Diamond.Jobs.dll
+C:\Users\kardavani.POUYAANDISHAN\Dropbox\02 - Project\My Projects - C#\Diamond\Diamond.Api\Diamond.Job\bin\Debug\net6.0\Diamond.Jobs.deps.json
+C:\Users\kardavani.POUYAANDISHAN\Dropbox\02 - Project\My Projects - C#\Diamond\Diamond.Api\Diamond.Job\bin\Debug\net6.0\Diamond.Jobs.dll
+C:\Users\kardavani.POUYAANDISHAN\Dropbox\02 - Project\My Projects - C#\Diamond\Diamond.Api\Diamond.Job\bin\Debug\net6.0\Diamond.Jobs.pdb
+C:\Users\kardavani.POUYAANDISHAN\Dropbox\02 - Project\My Projects - C#\Diamond\Diamond.Api\Diamond.Job\obj\Debug\net6.0\Diamond.Jobs.csproj.AssemblyReference.cache
+C:\Users\kardavani.POUYAANDISHAN\Dropbox\02 - Project\My Projects - C#\Diamond\Diamond.Api\Diamond.Job\obj\Debug\net6.0\Diamond.Jobs.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\kardavani.POUYAANDISHAN\Dropbox\02 - Project\My Projects - C#\Diamond\Diamond.Api\Diamond.Job\obj\Debug\net6.0\Diamond.Jobs.AssemblyInfoInputs.cache
+C:\Users\kardavani.POUYAANDISHAN\Dropbox\02 - Project\My Projects - C#\Diamond\Diamond.Api\Diamond.Job\obj\Debug\net6.0\Diamond.Jobs.AssemblyInfo.cs
+C:\Users\kardavani.POUYAANDISHAN\Dropbox\02 - Project\My Projects - C#\Diamond\Diamond.Api\Diamond.Job\obj\Debug\net6.0\Diamond.Jobs.csproj.CoreCompileInputs.cache
+C:\Users\kardavani.POUYAANDISHAN\Dropbox\02 - Project\My Projects - C#\Diamond\Diamond.Api\Diamond.Job\obj\Debug\net6.0\Diamond.Jobs.dll
+C:\Users\kardavani.POUYAANDISHAN\Dropbox\02 - Project\My Projects - C#\Diamond\Diamond.Api\Diamond.Job\obj\Debug\net6.0\refint\Diamond.Jobs.dll
+C:\Users\kardavani.POUYAANDISHAN\Dropbox\02 - Project\My Projects - C#\Diamond\Diamond.Api\Diamond.Job\obj\Debug\net6.0\Diamond.Jobs.pdb
+C:\Users\kardavani.POUYAANDISHAN\Dropbox\02 - Project\My Projects - C#\Diamond\Diamond.Api\Diamond.Job\obj\Debug\net6.0\ref\Diamond.Jobs.dll
+D:\99 - My Projects - C#\Diamond\Diamond.Job\bin\Debug\net6.0\Diamond.Jobs.deps.json
+D:\99 - My Projects - C#\Diamond\Diamond.Job\bin\Debug\net6.0\Diamond.Jobs.dll
+D:\99 - My Projects - C#\Diamond\Diamond.Job\bin\Debug\net6.0\Diamond.Jobs.pdb
+D:\99 - My Projects - C#\Diamond\Diamond.Job\obj\Debug\net6.0\Diamond.Jobs.csproj.AssemblyReference.cache
+D:\99 - My Projects - C#\Diamond\Diamond.Job\obj\Debug\net6.0\Diamond.Jobs.GeneratedMSBuildEditorConfig.editorconfig
+D:\99 - My Projects - C#\Diamond\Diamond.Job\obj\Debug\net6.0\Diamond.Jobs.AssemblyInfoInputs.cache
+D:\99 - My Projects - C#\Diamond\Diamond.Job\obj\Debug\net6.0\Diamond.Jobs.AssemblyInfo.cs
+D:\99 - My Projects - C#\Diamond\Diamond.Job\obj\Debug\net6.0\Diamond.Jobs.csproj.CoreCompileInputs.cache
+D:\99 - My Projects - C#\Diamond\Diamond.Job\obj\Debug\net6.0\Diamond.Jobs.dll
+D:\99 - My Projects - C#\Diamond\Diamond.Job\obj\Debug\net6.0\refint\Diamond.Jobs.dll
+D:\99 - My Projects - C#\Diamond\Diamond.Job\obj\Debug\net6.0\Diamond.Jobs.pdb
+D:\99 - My Projects - C#\Diamond\Diamond.Job\obj\Debug\net6.0\ref\Diamond.Jobs.dll

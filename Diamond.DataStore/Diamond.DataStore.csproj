@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Diamond.Domain\Diamond.Domain.csproj" />
+    <ProjectReference Include="..\Diamond.Persistance\Diamond.Persistance.csproj" />
+    <ProjectReference Include="..\Diamond.Services\Diamond.Services.csproj" />
+    <ProjectReference Include="..\Diamond.Utils\Diamond.Utils.csproj" />
+  </ItemGroup>
+
+</Project>

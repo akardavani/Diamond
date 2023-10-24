@@ -1,0 +1,51 @@
+C:\Users\kardavani.POUYAANDISHAN\Dropbox\02 - Project\Diamond\Diamond.Api\Diamond.Persistance\bin\Debug\net6.0\Diamond.Persistance.deps.json
+C:\Users\kardavani.POUYAANDISHAN\Dropbox\02 - Project\Diamond\Diamond.Api\Diamond.Persistance\bin\Debug\net6.0\Diamond.Persistance.runtimeconfig.json
+C:\Users\kardavani.POUYAANDISHAN\Dropbox\02 - Project\Diamond\Diamond.Api\Diamond.Persistance\bin\Debug\net6.0\Diamond.Persistance.dll
+C:\Users\kardavani.POUYAANDISHAN\Dropbox\02 - Project\Diamond\Diamond.Api\Diamond.Persistance\bin\Debug\net6.0\Diamond.Persistance.pdb
+C:\Users\kardavani.POUYAANDISHAN\Dropbox\02 - Project\Diamond\Diamond.Api\Diamond.Persistance\bin\Debug\net6.0\Diamond.Domain.dll
+C:\Users\kardavani.POUYAANDISHAN\Dropbox\02 - Project\Diamond\Diamond.Api\Diamond.Persistance\bin\Debug\net6.0\Diamond.Domain.pdb
+C:\Users\kardavani.POUYAANDISHAN\Dropbox\02 - Project\Diamond\Diamond.Api\Diamond.Persistance\obj\Debug\net6.0\Diamond.Persistance.csproj.AssemblyReference.cache
+C:\Users\kardavani.POUYAANDISHAN\Dropbox\02 - Project\Diamond\Diamond.Api\Diamond.Persistance\obj\Debug\net6.0\Diamond.Persistance.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\kardavani.POUYAANDISHAN\Dropbox\02 - Project\Diamond\Diamond.Api\Diamond.Persistance\obj\Debug\net6.0\Diamond.Persistance.AssemblyInfoInputs.cache
+C:\Users\kardavani.POUYAANDISHAN\Dropbox\02 - Project\Diamond\Diamond.Api\Diamond.Persistance\obj\Debug\net6.0\Diamond.Persistance.AssemblyInfo.cs
+C:\Users\kardavani.POUYAANDISHAN\Dropbox\02 - Project\Diamond\Diamond.Api\Diamond.Persistance\obj\Debug\net6.0\Diamond.Persistance.csproj.CoreCompileInputs.cache
+C:\Users\kardavani.POUYAANDISHAN\Dropbox\02 - Project\Diamond\Diamond.Api\Diamond.Persistance\obj\Debug\net6.0\Diamond.Persistance.csproj.CopyComplete
+C:\Users\kardavani.POUYAANDISHAN\Dropbox\02 - Project\Diamond\Diamond.Api\Diamond.Persistance\obj\Debug\net6.0\Diamond.Persistance.dll
+C:\Users\kardavani.POUYAANDISHAN\Dropbox\02 - Project\Diamond\Diamond.Api\Diamond.Persistance\obj\Debug\net6.0\ref\Diamond.Persistance.dll
+C:\Users\kardavani.POUYAANDISHAN\Dropbox\02 - Project\Diamond\Diamond.Api\Diamond.Persistance\obj\Debug\net6.0\Diamond.Persistance.pdb
+C:\Users\kardavani.POUYAANDISHAN\Dropbox\02 - Project\Diamond\Diamond.Api\Diamond.Persistance\obj\Debug\net6.0\Diamond.Persistance.genruntimeconfig.cache
+C:\Users\kardavani.POUYAANDISHAN\Dropbox\02 - Project\Diamond\Diamond.Api\Diamond.Persistance\obj\Debug\net6.0\refint\Diamond.Persistance.dll
+C:\Users\kardavani.POUYAANDISHAN\Dropbox\02 - Project\My Projects - C#\Diamond\Diamond.Api\Diamond.Persistance\bin\Debug\net6.0\Diamond.Persistance.deps.json
+C:\Users\kardavani.POUYAANDISHAN\Dropbox\02 - Project\My Projects - C#\Diamond\Diamond.Api\Diamond.Persistance\bin\Debug\net6.0\Diamond.Persistance.runtimeconfig.json
+C:\Users\kardavani.POUYAANDISHAN\Dropbox\02 - Project\My Projects - C#\Diamond\Diamond.Api\Diamond.Persistance\bin\Debug\net6.0\Diamond.Persistance.dll
+C:\Users\kardavani.POUYAANDISHAN\Dropbox\02 - Project\My Projects - C#\Diamond\Diamond.Api\Diamond.Persistance\bin\Debug\net6.0\Diamond.Persistance.pdb
+C:\Users\kardavani.POUYAANDISHAN\Dropbox\02 - Project\My Projects - C#\Diamond\Diamond.Api\Diamond.Persistance\bin\Debug\net6.0\Diamond.Domain.dll
+C:\Users\kardavani.POUYAANDISHAN\Dropbox\02 - Project\My Projects - C#\Diamond\Diamond.Api\Diamond.Persistance\bin\Debug\net6.0\Diamond.Domain.pdb
+C:\Users\kardavani.POUYAANDISHAN\Dropbox\02 - Project\My Projects - C#\Diamond\Diamond.Api\Diamond.Persistance\obj\Debug\net6.0\Diamond.Persistance.csproj.AssemblyReference.cache
+C:\Users\kardavani.POUYAANDISHAN\Dropbox\02 - Project\My Projects - C#\Diamond\Diamond.Api\Diamond.Persistance\obj\Debug\net6.0\Diamond.Persistance.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\kardavani.POUYAANDISHAN\Dropbox\02 - Project\My Projects - C#\Diamond\Diamond.Api\Diamond.Persistance\obj\Debug\net6.0\Diamond.Persistance.AssemblyInfoInputs.cache
+C:\Users\kardavani.POUYAANDISHAN\Dropbox\02 - Project\My Projects - C#\Diamond\Diamond.Api\Diamond.Persistance\obj\Debug\net6.0\Diamond.Persistance.AssemblyInfo.cs
+C:\Users\kardavani.POUYAANDISHAN\Dropbox\02 - Project\My Projects - C#\Diamond\Diamond.Api\Diamond.Persistance\obj\Debug\net6.0\Diamond.Persistance.csproj.CoreCompileInputs.cache
+C:\Users\kardavani.POUYAANDISHAN\Dropbox\02 - Project\My Projects - C#\Diamond\Diamond.Api\Diamond.Persistance\obj\Debug\net6.0\Diamond.Persistance.csproj.CopyComplete
+C:\Users\kardavani.POUYAANDISHAN\Dropbox\02 - Project\My Projects - C#\Diamond\Diamond.Api\Diamond.Persistance\obj\Debug\net6.0\Diamond.Persistance.dll
+C:\Users\kardavani.POUYAANDISHAN\Dropbox\02 - Project\My Projects - C#\Diamond\Diamond.Api\Diamond.Persistance\obj\Debug\net6.0\refint\Diamond.Persistance.dll
+C:\Users\kardavani.POUYAANDISHAN\Dropbox\02 - Project\My Projects - C#\Diamond\Diamond.Api\Diamond.Persistance\obj\Debug\net6.0\Diamond.Persistance.pdb
+C:\Users\kardavani.POUYAANDISHAN\Dropbox\02 - Project\My Projects - C#\Diamond\Diamond.Api\Diamond.Persistance\obj\Debug\net6.0\Diamond.Persistance.genruntimeconfig.cache
+C:\Users\kardavani.POUYAANDISHAN\Dropbox\02 - Project\My Projects - C#\Diamond\Diamond.Api\Diamond.Persistance\obj\Debug\net6.0\ref\Diamond.Persistance.dll
+D:\99 - My Projects - C#\Diamond\Diamond.Persistance\bin\Debug\net6.0\Diamond.Persistance.deps.json
+D:\99 - My Projects - C#\Diamond\Diamond.Persistance\bin\Debug\net6.0\Diamond.Persistance.runtimeconfig.json
+D:\99 - My Projects - C#\Diamond\Diamond.Persistance\bin\Debug\net6.0\Diamond.Persistance.dll
+D:\99 - My Projects - C#\Diamond\Diamond.Persistance\bin\Debug\net6.0\Diamond.Persistance.pdb
+D:\99 - My Projects - C#\Diamond\Diamond.Persistance\bin\Debug\net6.0\Diamond.Domain.dll
+D:\99 - My Projects - C#\Diamond\Diamond.Persistance\bin\Debug\net6.0\Diamond.Domain.pdb
+D:\99 - My Projects - C#\Diamond\Diamond.Persistance\obj\Debug\net6.0\Diamond.Persistance.csproj.AssemblyReference.cache
+D:\99 - My Projects - C#\Diamond\Diamond.Persistance\obj\Debug\net6.0\Diamond.Persistance.GeneratedMSBuildEditorConfig.editorconfig
+D:\99 - My Projects - C#\Diamond\Diamond.Persistance\obj\Debug\net6.0\Diamond.Persistance.AssemblyInfoInputs.cache
+D:\99 - My Projects - C#\Diamond\Diamond.Persistance\obj\Debug\net6.0\Diamond.Persistance.AssemblyInfo.cs
+D:\99 - My Projects - C#\Diamond\Diamond.Persistance\obj\Debug\net6.0\Diamond.Persistance.csproj.CoreCompileInputs.cache
+D:\99 - My Projects - C#\Diamond\Diamond.Persistance\obj\Debug\net6.0\Diamond.Persistance.csproj.CopyComplete
+D:\99 - My Projects - C#\Diamond\Diamond.Persistance\obj\Debug\net6.0\Diamond.Persistance.dll
+D:\99 - My Projects - C#\Diamond\Diamond.Persistance\obj\Debug\net6.0\refint\Diamond.Persistance.dll
+D:\99 - My Projects - C#\Diamond\Diamond.Persistance\obj\Debug\net6.0\Diamond.Persistance.pdb
+D:\99 - My Projects - C#\Diamond\Diamond.Persistance\obj\Debug\net6.0\Diamond.Persistance.genruntimeconfig.cache
+D:\99 - My Projects - C#\Diamond\Diamond.Persistance\obj\Debug\net6.0\ref\Diamond.Persistance.dll

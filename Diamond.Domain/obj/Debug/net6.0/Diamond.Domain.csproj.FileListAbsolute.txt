@@ -1,0 +1,36 @@
+C:\Users\kardavani.POUYAANDISHAN\Dropbox\02 - Project\Diamond\Diamond.Api\Diamond.Domain\bin\Debug\net6.0\Diamond.Domain.deps.json
+C:\Users\kardavani.POUYAANDISHAN\Dropbox\02 - Project\Diamond\Diamond.Api\Diamond.Domain\bin\Debug\net6.0\Diamond.Domain.dll
+C:\Users\kardavani.POUYAANDISHAN\Dropbox\02 - Project\Diamond\Diamond.Api\Diamond.Domain\bin\Debug\net6.0\Diamond.Domain.pdb
+C:\Users\kardavani.POUYAANDISHAN\Dropbox\02 - Project\Diamond\Diamond.Api\Diamond.Domain\obj\Debug\net6.0\Diamond.Domain.csproj.AssemblyReference.cache
+C:\Users\kardavani.POUYAANDISHAN\Dropbox\02 - Project\Diamond\Diamond.Api\Diamond.Domain\obj\Debug\net6.0\Diamond.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\kardavani.POUYAANDISHAN\Dropbox\02 - Project\Diamond\Diamond.Api\Diamond.Domain\obj\Debug\net6.0\Diamond.Domain.AssemblyInfoInputs.cache
+C:\Users\kardavani.POUYAANDISHAN\Dropbox\02 - Project\Diamond\Diamond.Api\Diamond.Domain\obj\Debug\net6.0\Diamond.Domain.AssemblyInfo.cs
+C:\Users\kardavani.POUYAANDISHAN\Dropbox\02 - Project\Diamond\Diamond.Api\Diamond.Domain\obj\Debug\net6.0\Diamond.Domain.csproj.CoreCompileInputs.cache
+C:\Users\kardavani.POUYAANDISHAN\Dropbox\02 - Project\Diamond\Diamond.Api\Diamond.Domain\obj\Debug\net6.0\Diamond.Domain.dll
+C:\Users\kardavani.POUYAANDISHAN\Dropbox\02 - Project\Diamond\Diamond.Api\Diamond.Domain\obj\Debug\net6.0\ref\Diamond.Domain.dll
+C:\Users\kardavani.POUYAANDISHAN\Dropbox\02 - Project\Diamond\Diamond.Api\Diamond.Domain\obj\Debug\net6.0\Diamond.Domain.pdb
+C:\Users\kardavani.POUYAANDISHAN\Dropbox\02 - Project\Diamond\Diamond.Api\Diamond.Domain\obj\Debug\net6.0\refint\Diamond.Domain.dll
+C:\Users\kardavani.POUYAANDISHAN\Dropbox\02 - Project\My Projects - C#\Diamond\Diamond.Api\Diamond.Domain\bin\Debug\net6.0\Diamond.Domain.deps.json
+C:\Users\kardavani.POUYAANDISHAN\Dropbox\02 - Project\My Projects - C#\Diamond\Diamond.Api\Diamond.Domain\bin\Debug\net6.0\Diamond.Domain.dll
+C:\Users\kardavani.POUYAANDISHAN\Dropbox\02 - Project\My Projects - C#\Diamond\Diamond.Api\Diamond.Domain\bin\Debug\net6.0\Diamond.Domain.pdb
+C:\Users\kardavani.POUYAANDISHAN\Dropbox\02 - Project\My Projects - C#\Diamond\Diamond.Api\Diamond.Domain\obj\Debug\net6.0\Diamond.Domain.csproj.AssemblyReference.cache
+C:\Users\kardavani.POUYAANDISHAN\Dropbox\02 - Project\My Projects - C#\Diamond\Diamond.Api\Diamond.Domain\obj\Debug\net6.0\Diamond.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\kardavani.POUYAANDISHAN\Dropbox\02 - Project\My Projects - C#\Diamond\Diamond.Api\Diamond.Domain\obj\Debug\net6.0\Diamond.Domain.AssemblyInfoInputs.cache
+C:\Users\kardavani.POUYAANDISHAN\Dropbox\02 - Project\My Projects - C#\Diamond\Diamond.Api\Diamond.Domain\obj\Debug\net6.0\Diamond.Domain.AssemblyInfo.cs
+C:\Users\kardavani.POUYAANDISHAN\Dropbox\02 - Project\My Projects - C#\Diamond\Diamond.Api\Diamond.Domain\obj\Debug\net6.0\Diamond.Domain.csproj.CoreCompileInputs.cache
+C:\Users\kardavani.POUYAANDISHAN\Dropbox\02 - Project\My Projects - C#\Diamond\Diamond.Api\Diamond.Domain\obj\Debug\net6.0\Diamond.Domain.dll
+C:\Users\kardavani.POUYAANDISHAN\Dropbox\02 - Project\My Projects - C#\Diamond\Diamond.Api\Diamond.Domain\obj\Debug\net6.0\refint\Diamond.Domain.dll
+C:\Users\kardavani.POUYAANDISHAN\Dropbox\02 - Project\My Projects - C#\Diamond\Diamond.Api\Diamond.Domain\obj\Debug\net6.0\Diamond.Domain.pdb
+C:\Users\kardavani.POUYAANDISHAN\Dropbox\02 - Project\My Projects - C#\Diamond\Diamond.Api\Diamond.Domain\obj\Debug\net6.0\ref\Diamond.Domain.dll
+D:\99 - My Projects - C#\Diamond\Diamond.Domain\bin\Debug\net6.0\Diamond.Domain.deps.json
+D:\99 - My Projects - C#\Diamond\Diamond.Domain\bin\Debug\net6.0\Diamond.Domain.dll
+D:\99 - My Projects - C#\Diamond\Diamond.Domain\bin\Debug\net6.0\Diamond.Domain.pdb
+D:\99 - My Projects - C#\Diamond\Diamond.Domain\obj\Debug\net6.0\Diamond.Domain.csproj.AssemblyReference.cache
+D:\99 - My Projects - C#\Diamond\Diamond.Domain\obj\Debug\net6.0\Diamond.Domain.GeneratedMSBuildEditorConfig.editorconfig
+D:\99 - My Projects - C#\Diamond\Diamond.Domain\obj\Debug\net6.0\Diamond.Domain.AssemblyInfoInputs.cache
+D:\99 - My Projects - C#\Diamond\Diamond.Domain\obj\Debug\net6.0\Diamond.Domain.AssemblyInfo.cs
+D:\99 - My Projects - C#\Diamond\Diamond.Domain\obj\Debug\net6.0\Diamond.Domain.csproj.CoreCompileInputs.cache
+D:\99 - My Projects - C#\Diamond\Diamond.Domain\obj\Debug\net6.0\Diamond.Domain.dll
+D:\99 - My Projects - C#\Diamond\Diamond.Domain\obj\Debug\net6.0\refint\Diamond.Domain.dll
+D:\99 - My Projects - C#\Diamond\Diamond.Domain\obj\Debug\net6.0\Diamond.Domain.pdb
+D:\99 - My Projects - C#\Diamond\Diamond.Domain\obj\Debug\net6.0\ref\Diamond.Domain.dll
