@@ -1,16 +1,10 @@
-﻿using Diamond.Domain;
-using Diamond.Domain.Entities;
-using Diamond.Domain.Entities.TsePublic;
+﻿using Diamond.Domain.Entities;
 using Diamond.Domain.Enums;
-using Diamond.Domain.Models;
-using Diamond.Services.BusinessService.Strategy;
 using Diamond.Services.CandelClient;
 using Diamond.Services.TseTmcClient;
-using Diamond.Utils.BrokerExtention;
 using Microsoft.EntityFrameworkCore;
 using Persistence.Context;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -123,67 +117,9 @@ namespace Diamond.Services.BusinessService
 
         public async Task GetCandelData(CancellationToken cancellation)
         {
-            var timeframe = TimeframeEnum.Daily;
-            await GetAllCandelData(timeframe, cancellation);
-        }
 
-        public async Task GetAllCandelData(TimeframeEnum timeFram, CancellationToken cancellation)
-        {
-            var tseInstruments = await _dbContext
-                .Set<TseInstrument>()
-                //.Where(e=>e.InstrumentId == "IRO1TSBE0001")
-                .Where(e => e.MarketSegment == "No" 
-                && !e.InstrumentId.Contains("0101"))                     
-                .ToListAsync(cancellationToken: cancellation);
-            
-            var candels = await _dbContext
-               .Set<Candel>()
-               .ToListAsync(cancellation);
+            var list = await _candelService.GetDataByUrl("IRO1IKCO00013", TimeframeEnum.Daily);
 
-            var candelsLastTimestamp = candels.GroupBy(c => new
-            {
-                c.InstrumentId,
-                c.TimeFrame,
-            }).Select(g => new
-            {
-                InstrumentId = g.Key.InstrumentId,
-                TimeFrame = g.Key.TimeFrame,
-                LastTimestamp = g.Max(e => e.Timestamp)
-            });
-
-            var from = BrokerExtention.DateTimeToUnixTimestamp(DateTime.Now.AddYears(-15));
-
-            foreach (var instrument in tseInstruments)
-            {
-                var lastTimestamp = long.Parse(from);
-                var can = candelsLastTimestamp
-                    .Where(e => e.InstrumentId == instrument.InstrumentId && e.TimeFrame == timeFram).FirstOrDefault();
-
-                if (can is not null)                
-                   lastTimestamp = can.LastTimestamp; 
-
-                var candelModel = await _candelService.GetDataByUrl(instrument.InstrumentId, timeFram);
-
-                foreach (var candel in candelModel.Candels.Where(e=>e.Timestamp > lastTimestamp))
-                {
-                    var entity = new Candel
-                    {
-                        Close = candel.Close,
-                        Date = candel.Date,
-                        High = candel.High,
-                        Low = candel.Low,
-                        Open = candel.Open,
-                        Volume = candel.Volume,
-                        NetValue = candel.NetValue,
-                        Timestamp = candel.Timestamp,
-                        InstrumentId = instrument.InstrumentId,
-                        TimeFrame = timeFram,
-                    };
-                    _dbContext.Add(entity);
-                }
-            }
-
-            var response = await _dbContext.SaveChangesAsync(cancellation);
         }
     }
 }

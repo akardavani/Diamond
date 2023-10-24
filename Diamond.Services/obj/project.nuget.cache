@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "jB135gQozrpue2zLra3uuxApFCWlNZsMiQIEUEQqe7Xn2cqG01YGOQMHOZGhL5AaPqeJo9WOTEUrJKU63Ci1wA==",
+  "dgSpecHash": "sWtLJeCiHlu9127YQLObvPiBx3bQtz6xMdUXRIwUUCWapn5k5s2NN0pWf2ZUwI05JRkKChwSwr1ci75mJPruLQ==",
   "success": true,
   "projectFilePath": "D:\\99 - My Projects - C#\\Diamond\\Diamond.Services\\Diamond.Services.csproj",
   "expectedPackageFiles": [
@@ -62,7 +62,6 @@
     "C:\\Users\\kardavani.POUYAANDISHAN\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",
     "C:\\Users\\kardavani.POUYAANDISHAN\\.nuget\\packages\\microsoft.win32.systemevents\\4.7.0\\microsoft.win32.systemevents.4.7.0.nupkg.sha512",
     "C:\\Users\\kardavani.POUYAANDISHAN\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512",
-    "C:\\Users\\kardavani.POUYAANDISHAN\\.nuget\\packages\\skender.stock.indicators\\2.4.10\\skender.stock.indicators.2.4.10.nupkg.sha512",
     "C:\\Users\\kardavani.POUYAANDISHAN\\.nuget\\packages\\system.buffers\\4.5.0\\system.buffers.4.5.0.nupkg.sha512",
     "C:\\Users\\kardavani.POUYAANDISHAN\\.nuget\\packages\\system.collections.immutable\\6.0.0\\system.collections.immutable.6.0.0.nupkg.sha512",
     "C:\\Users\\kardavani.POUYAANDISHAN\\.nuget\\packages\\system.configuration.configurationmanager\\4.7.0\\system.configuration.configurationmanager.4.7.0.nupkg.sha512",

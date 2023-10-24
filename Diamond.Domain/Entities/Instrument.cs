@@ -43,6 +43,5 @@
 
         public virtual ICollection<InstrumentsEfficiency> InstrumentsEfficiencies { get; set; }
         public virtual ICollection<Trade> Trades { get; set; }
-        //public virtual ICollection<Candel> Candels { get; set; }
     }
 }

@@ -495,10 +495,6 @@
               "target": "Package",
               "version": "[13.0.1, )"
             },
-            "Skender.Stock.Indicators": {
-              "target": "Package",
-              "version": "[2.4.10, )"
-            },
             "System.ServiceModel.Duplex": {
               "target": "Package",
               "version": "[4.8.*, )"

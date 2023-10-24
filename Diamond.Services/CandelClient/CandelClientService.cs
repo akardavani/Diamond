@@ -1,5 +1,4 @@
-﻿using Diamond.Domain.Entities.TsePublic;
-using Diamond.Domain.Enums;
+﻿using Diamond.Domain.Enums;
 using Diamond.Domain.Models;
 using Diamond.Domain.Setting;
 using Diamond.Utils.BrokerExtention;
@@ -40,21 +39,19 @@ namespace Diamond.Services.CandelClient
             }
         }
 
-
-
-        public async Task<CandelDataModel> GetDataByUrl(string symbol, TimeframeEnum timeframe)
+        public async Task<CandelDataModel> GetDataByUrl(string symbol, TimeframeEnum timeFram)
         {
             try
             {
                 var candelModels = new List<CandelModel>();
-                var resolution = NahayatnegarExtention.GetTimeFrame(timeframe);
+                var resolution = NahayatnegarExtention.GetTimeFrame(timeFram);
                 var from = BrokerExtention.DateTimeToUnixTimestamp(DateTime.Now.AddYears(-15));
-                var to = BrokerExtention.DateTimeToUnixTimestamp(DateTime.Now);
+                var to = BrokerExtention.DateTimeToUnixTimestamp(DateTime.Now); 
 
                 var adjustmentType = "3";
 
                 var url = _settings.CandelSettings.HistoryUrl
-                    .Replace("@Symbol", symbol + adjustmentType)
+                    .Replace("@Symbol", symbol)
                     .Replace("@Resolution", resolution)
                     .Replace("@From", from)
                     .Replace("@To", to)
@@ -66,7 +63,7 @@ namespace Diamond.Services.CandelClient
                 {
                     Candels = candelModels,
                     Symbol = symbol,
-                    Timeframe = timeframe
+                    Timeframe = timeFram
                 };
             }
             catch (Exception ex)

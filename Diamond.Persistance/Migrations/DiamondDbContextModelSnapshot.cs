@@ -22,49 +22,6 @@ namespace Diamond.Persistance.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
-            modelBuilder.Entity("Diamond.Domain.Entities.Candel", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"), 1L, 1);
-
-                    b.Property<decimal>("Close")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<DateTime>("Date")
-                        .HasColumnType("datetime2");
-
-                    b.Property<decimal>("High")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<string>("InstrumentId")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<decimal>("Low")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<decimal>("NetValue")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<decimal>("Open")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<int>("TimeFrame")
-                        .HasColumnType("int");
-
-                    b.Property<long>("Timestamp")
-                        .HasColumnType("bigint");
-
-                    b.Property<decimal>("Volume")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Candel");
-                });
-
             modelBuilder.Entity("Diamond.Domain.Entities.Instrument", b =>
                 {
                     b.Property<int>("Id")

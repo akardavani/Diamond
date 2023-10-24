@@ -1,5 +1,4 @@
 ﻿using Diamond.Jobs;
-using Diamond.Services.BusinessService.Strategy;
 using Diamond.Services.Jobs;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
@@ -21,7 +20,6 @@ namespace Diamond.Services
                 services.TryAddScoped(type);
             }
 
-            
             var jobs = typeof(TseTmcJob).Assembly.GetTypes().
                 Where(x => x.IsClass && !x.IsAbstract && typeof(IJob).IsAssignableFrom(x));
 
@@ -29,10 +27,6 @@ namespace Diamond.Services
             {
                 services.TryAddEnumerable(ServiceDescriptor.Singleton(typeof(IJob), job));
             }
-
-
-            services.AddScoped<ITradingStrategyHandler<IchimokuStrategyCommand>, IchimokuStrategyHandler>();
-            services.AddScoped<ITradingStrategyHandler<GoldCommand>, GoldHandler>();
 
             return services;
         }
