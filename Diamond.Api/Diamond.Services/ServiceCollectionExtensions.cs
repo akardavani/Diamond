@@ -1,5 +1,7 @@
 ﻿using Diamond.Jobs;
+using Diamond.Services.CandelClient;
 using Diamond.Services.Jobs;
+using Diamond.Services.Strategy;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using System.Linq;
@@ -13,7 +15,10 @@ namespace Diamond.Services
             var types = typeof(ServiceCollectionExtensions)
                 .Assembly
                 .ExportedTypes
-                .Where(t => t != typeof(IBusinessService) && typeof(IBusinessService).IsAssignableFrom(t));
+                .Where(t => t != typeof(IBusinessService) && typeof(IBusinessService).IsAssignableFrom(t)
+                || t != typeof(IStrategyImplementation) && typeof(IStrategyImplementation).IsAssignableFrom(t)
+                || t != typeof(ICandelClient) && typeof(ICandelClient).IsAssignableFrom(t));
+            
 
             foreach (var type in types)
             {

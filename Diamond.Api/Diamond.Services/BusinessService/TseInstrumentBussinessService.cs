@@ -74,7 +74,7 @@ namespace Diamond.Services.BusinessService
             return instruments;
         }
 
-        public async Task SaveTseInstrumentAsync(CancellationToken cancellation)
+        public async Task<bool> SaveTseInstrumentAsync(CancellationToken cancellation)
         {
             var client = new TsePublicV2SoapClient(EndpointConfiguration.TsePublicV2Soap12);
             var root = new List<XElement>();
@@ -121,13 +121,20 @@ namespace Diamond.Services.BusinessService
                 var instrumentCache = new InstrumentCacheManager(_cacheManager);
                 await instrumentCache.UpdateInstrument_TseInstrument(list);
 
-                await SaveTseInstrument(list,cancellation);
+                var response = await SaveTseInstrument(list,cancellation);
+
+                return response;
             }
+            else
+            {
+                return false;
+            }
+
         }
 
         
 
-        public async Task SaveTseInstrument(List<TseInstrument> list, CancellationToken cancellation)
+        public async Task<bool> SaveTseInstrument(List<TseInstrument> list, CancellationToken cancellation)
         {
             var tseInstruments = await _dbContext.Set<TseInstrument>()
                 .ToListAsync(cancellationToken: cancellation);
@@ -181,6 +188,8 @@ namespace Diamond.Services.BusinessService
             }
 
             var response = await _dbContext.SaveChangesAsync(cancellation);
+
+            return true ? response == 0 : false;
         }
 
 

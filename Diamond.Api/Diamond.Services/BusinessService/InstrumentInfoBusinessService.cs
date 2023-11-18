@@ -1,11 +1,14 @@
 ﻿using Diamond.Domain.Entities;
+using Diamond.Domain.Entities.TsePublic;
 using Diamond.Domain.Enums;
 using Diamond.Services.CandelClient;
+using Diamond.Services.CommonService;
 using Diamond.Services.TseTmcClient;
 using Microsoft.EntityFrameworkCore;
 using Persistence.Context;
 using System;
 using System.Linq;
+using System.Security.Principal;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -15,17 +18,22 @@ namespace Diamond.Services.BusinessService
     {
         private readonly DiamondDbContext _dbContext;
         private readonly TseTmcClientService _tseService;
-        private readonly CandelClientService _candelService;
+        private readonly CandelClientFactory _candelClientFactory;
+        private readonly CommonInstrument _instrument;
 
-        public InstrumentInfoBusinessService(DiamondDbContext dbContext,
+        public InstrumentInfoBusinessService(
+            DiamondDbContext dbContext,
             TseTmcClientService tseService,
-            CandelClientService candelService)
+            CandelClientFactory candelClientFactory,
+            CommonInstrument instrument
+            )
         {
             _dbContext = dbContext;
             _tseService = tseService;
-            _candelService = candelService;
+            _candelClientFactory = candelClientFactory;
+            _instrument = instrument;
         }
-        public async Task GetTseTmcData(CancellationToken cancellation)
+        public async Task<bool> GetTseTmcData(CancellationToken cancellation)
         {
 
             var list = await _tseService.GetInstrumentList(cancellation);
@@ -59,8 +67,8 @@ namespace Diamond.Services.BusinessService
                     if (entity == null)
                     {
                         entity = new InstrumentExtraInfo()
-                        { 
-                            InstrumentId = item.InstrumentId 
+                        {
+                            InstrumentId = item.InstrumentId
                         };
                         _dbContext.Add(entity);
                     }
@@ -84,7 +92,7 @@ namespace Diamond.Services.BusinessService
                     var instrumentEntity = instruments.FirstOrDefault(x => x.InstrumentId == item.InstrumentId);
                     if (instrumentEntity == null)
                     {
-                        instrumentEntity = new Instrument();                        
+                        instrumentEntity = new Instrument();
                         _dbContext.Add(instrumentEntity);
                     }
 
@@ -113,13 +121,70 @@ namespace Diamond.Services.BusinessService
             }
 
             var response = await _dbContext.SaveChangesAsync(cancellation);
+
+            return true ? response == 0 : false;
         }
 
-        public async Task GetCandelData(CancellationToken cancellation)
+        public async Task<bool> GetCandlesInformation(CancellationToken cancellation)
         {
+            var instruments = await _instrument.GetAllInstrumentIds(cancellation);
 
-            var list = await _candelService.GetDataByUrl("IRO1IKCO00013", TimeframeEnum.Daily);
+            var ins = await _instrument.GetAllCandles(cancellation);
+            var mustDelet = ins
+                //.Where(e => e.Date.Date == DateTime.Today.Date)
+                .GroupBy(e => e.InstrumentId)
+                .Select(e => e.Key)
+                .ToList();
 
+            instruments.RemoveAll(item => mustDelet.Contains(item));
+
+            //var candels = await _dbContext
+            //    .Set<Candel>()
+            //    .ToListAsync(cancellation);
+
+            var timeframe = TimeframeEnum.Daily;
+            var response = 1;
+            var count = 0;
+
+            foreach (var instrument in instruments)
+            {
+                count++;
+                var data = await _candelClientFactory.GetDataByUrl(instrument, 1, timeframe);
+
+                if (data.Candels.Count == 0)
+                    continue;
+
+                foreach (var item in data.Candels)
+                {
+                    var candel = new Candel
+                    {
+                        InstrumentId = instrument,
+                        Open = item.Open,
+                        Close = item.Close,
+                        High = item.High,
+                        Low = item.Low,
+                        Timeframe = (int)timeframe,
+                        Date = item.Date,
+                        Timestamp = item.Timestamp,
+                        NetValue = item.NetValue,
+                        Volume = item.Volume
+                    };
+
+                    _dbContext.Set<Candel>().Add(candel);
+                }
+
+                response = await _dbContext.SaveChangesAsync(cancellation);
+
+                if (count % 50 == 0)
+                {
+                    
+                    Thread.Sleep(5 * 1000);
+                }
+            }
+
+            //response = await _dbContext.SaveChangesAsync(cancellation);
+
+            return true;
         }
     }
 }

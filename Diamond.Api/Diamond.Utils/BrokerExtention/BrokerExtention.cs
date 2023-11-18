@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Diamond.Domain.Enums;
 
 namespace Diamond.Utils.BrokerExtention
 {
@@ -22,6 +18,17 @@ namespace Diamond.Utils.BrokerExtention
             DateTime dateTime = new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc);
             dateTime = dateTime.AddSeconds(unixTimeStamp).ToLocalTime();
             return dateTime;
+        }
+
+        public static bool CompareValues(decimal value, decimal targetValue, ComparisonPriceTypeEnum comparisonType)
+        {
+            return comparisonType switch
+            {
+                ComparisonPriceTypeEnum.Equal => value == targetValue,
+                ComparisonPriceTypeEnum.GreaterThan => value > targetValue,
+                ComparisonPriceTypeEnum.LessThan => value < targetValue,
+                _ => throw new ArgumentException("Invalid comparison type."),
+            };
         }
     }
 }
