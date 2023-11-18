@@ -58,37 +58,107 @@ namespace Diamond.Services.BusinessService
                     })
                     .ToList();
 
-                if (request.CrossIchimoko)
+                PivotPoints(request, symbols, indicatorCandel, cancellation);
+
+                CrossIchimoko(request, symbols, indicatorCandel, cancellation);
+
+                PriceIchimokoCloud(request, symbols, indicatorCandel, cancellation);
+
+                //if (request.CrossIchimoko)
+                //{
+                //    var indicatorParameter = new IndicatorParameter
+                //    {
+                //        CrossIchimokoParameter = new CrossIchimokoIndicatorParameter
+                //        {
+                //            FromDate = request.FromDate,
+                //            ToDate = request.ToDate,
+                //            Trend = request.Trend
+                //        }
+                //    };
+
+                //    var strategy = new StrategyImplementation(new CrossIchimokoStrategy(), indicatorParameter);
+                //    symbols = strategy.FindSymbols(indicatorCandel);
+                //}
+
+                //if (request.PriceAboveBelow is not null)
+                //{
+                //    var indicatorParameter = new IndicatorParameter
+                //    {
+                //        FromDate = request.FromDate,
+                //        ToDate = request.ToDate,
+                //        CandelPriceType = request.CandelPriceType,
+                //        ComparisonPriceType = request.ComparisonPriceType,
+                //        IchimokoCloudColor = request.IchimokoCloudColor
+                //    };
+
+                //    var strategy = new StrategyImplementation(new PriceIchimokoCloudStrategy(), indicatorParameter);
+                //    symbols = strategy.FindSymbols(indicatorCandel);
+                //}
+            }
+
+
+            return symbols;
+        }
+
+
+
+        private void PivotPoints(FindSymbolDto request, List<IndicatorCandel> symbols, List<IndicatorCandel> indicatorCandel, CancellationToken cancellation)
+        {
+            if (request.PivotPointsStrategy)
+            {
+                var indicatorParameter = new IndicatorParameter
                 {
-                    var indicatorParameter = new IndicatorParameter
+                    PivotPointsParameter = new PivotPointsIndicatorParameter
+                    {
+                        FromDate = request.FromDate,
+                        ToDate = request.ToDate,
+                        CandelPriceType = request.CandelPriceType
+                    }
+                };
+
+                var strategy = new StrategyImplementation(new PivotPointsStrategy(), indicatorParameter);
+                symbols = strategy.FindSymbols(indicatorCandel);
+            }
+        }
+
+        private void CrossIchimoko(FindSymbolDto request, List<IndicatorCandel> symbols, List<IndicatorCandel> indicatorCandel, CancellationToken cancellation)
+        {
+            if (request.CrossIchimoko)
+            {
+                var indicatorParameter = new IndicatorParameter
+                {
+                    CrossIchimokoParameter = new CrossIchimokoIndicatorParameter
                     {
                         FromDate = request.FromDate,
                         ToDate = request.ToDate,
                         Trend = request.Trend
-                    };
+                    }
+                };
 
-                    var strategy = new StrategyImplementation(new CrossIchimokoStrategy(), indicatorParameter);
-                    symbols = strategy.FindSymbols(indicatorCandel);
-                }
+                var strategy = new StrategyImplementation(new CrossIchimokoStrategy(), indicatorParameter);
+                symbols = strategy.FindSymbols(indicatorCandel);
+            }
+        }
 
-                if (request.PriceAboveBelow is not null)
+        private void PriceIchimokoCloud(FindSymbolDto request, List<IndicatorCandel> symbols, List<IndicatorCandel> indicatorCandel, CancellationToken cancellation)
+        {
+            if (request.PriceAboveBelow is not null)
+            {
+                var indicatorParameter = new IndicatorParameter
                 {
-                    var indicatorParameter = new IndicatorParameter
+                    PriceIchimokoCloudParameter = new PriceIchimokoCloudIndicatorParameter
                     {
                         FromDate = request.FromDate,
                         ToDate = request.ToDate,
                         CandelPriceType = request.CandelPriceType,
                         ComparisonPriceType = request.ComparisonPriceType,
-                        IchimokoCloudColor = request.IchimokoCloudColor                        
-                    };
+                        IchimokoCloudColor = request.IchimokoCloudColor
+                    }
+                };
 
-                    var strategy = new StrategyImplementation(new AboveBelowPriceIchimokoCloudStrategy(), indicatorParameter);
-                    symbols = strategy.FindSymbols(indicatorCandel);
-                }
+                var strategy = new StrategyImplementation(new PriceIchimokoCloudStrategy(), indicatorParameter);
+                symbols = strategy.FindSymbols(indicatorCandel);
             }
-
-
-            return symbols;
         }
     }
 }

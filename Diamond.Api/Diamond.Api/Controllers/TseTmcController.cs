@@ -17,7 +17,6 @@ namespace Diamond.API.Controllers
             _findSymbol = findSymbol;
         }
 
-
         [HttpGet]
         public async Task Get(CancellationToken cancellation)
         {
@@ -30,21 +29,21 @@ namespace Diamond.API.Controllers
             await _businessService.GetCandlesInformation(cancellation);
         }
 
-
         [HttpGet]
         public async Task<List<IndicatorCandel>> FindSymbols([FromQuery] FindSymbolRequest request, CancellationToken cancellation)
         {
             var symbols = await _findSymbol.GetCandelData(new FindSymbolDto
             {
                 TakingSymbolsAndCandles = request.TakingSymbolsAndCandles,
-                CrossIchimoko = request.CrossIchimoko,
+                CrossIchimoko = request.CrossIchimokoStrategy,
+                PivotPointsStrategy = request.PivotPointsStrategy,
                 FromDate = new DateOnly(request.FromDate.Year, request.FromDate.Month, request.FromDate.Day),
                 ToDate = new DateOnly(request.ToDate.Year, request.ToDate.Month, request.ToDate.Day),
                 Trend = request.Trend,
                 CandelPriceType = request.CandelPriceType,
                 ComparisonPriceType = request.ComparisonPriceType,
                 PriceAboveBelow = request.PriceAboveBelow,
-                IchimokoCloudColor = request.IchimokoCloudColor
+                IchimokoCloudColor = request.IchimokoCloudColor                
             }, cancellation);
 
             return symbols;

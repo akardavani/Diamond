@@ -5,13 +5,17 @@ namespace Diamond.Domain.Models.TseInstrument
     public class FindSymbolRequest
     {
         /// <summary>
+        /// PivotPoints استراتژی 
+        /// </summary>
+        public bool PivotPointsStrategy { get; set; }
+        /// <summary>
         /// گرفتن نمادها و کندل ها
         /// </summary>
         public bool TakingSymbolsAndCandles { get; set; }
         /// <summary>
         /// کراس خط های ایچی موکو
         /// </summary>
-        public bool CrossIchimoko { get; set; }
+        public bool CrossIchimokoStrategy { get; set; }
         /// <summary>
         /// از تاریخ 
         /// </summary>

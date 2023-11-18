@@ -1,17 +1,18 @@
 ﻿using Diamond.Domain.Enums;
 using Diamond.Domain.Indicator;
 using Diamond.Services.Indicator;
-using Diamond.Utils.BrokerExtention;
 using Skender.Stock.Indicators;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace Diamond.Services.Strategy
 {
-    public class AboveBelowPriceIchimokoCloudStrategy : IStrategyImplementation
+    public class PriceIchimokoCloudStrategy : IStrategyImplementation
     {
-        public List<IndicatorCandel> FindSymbols(List<IndicatorCandel> ichimokuCandles, IndicatorParameter parameter)
+        public List<IndicatorCandel> FindSymbols(List<IndicatorCandel> ichimokuCandles, IndicatorParameter indicatorParameter)
         {
+            var parameter = indicatorParameter.PriceIchimokoCloudParameter;
+
             var candels = ichimokuCandles
                 .Select(e => new IchimokuIndicatorModel(parameter.CandelPriceType, e))
                 .ToList();

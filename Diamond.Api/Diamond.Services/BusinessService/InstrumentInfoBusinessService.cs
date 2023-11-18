@@ -4,6 +4,7 @@ using Diamond.Domain.Enums;
 using Diamond.Services.CandelClient;
 using Diamond.Services.CommonService;
 using Diamond.Services.TseTmcClient;
+using Diamond.Utils.BrokerExtention;
 using Microsoft.EntityFrameworkCore;
 using Persistence.Context;
 using System;
@@ -165,9 +166,11 @@ namespace Diamond.Services.BusinessService
                         Low = item.Low,
                         Timeframe = (int)timeframe,
                         Date = item.Date,
+                        PersianDate = item.Date.ToPersian("yyyy/MM/dd"),
                         Timestamp = item.Timestamp,
                         NetValue = item.NetValue,
-                        Volume = item.Volume
+                        Volume = item.Volume,
+
                     };
 
                     _dbContext.Set<Candel>().Add(candel);

@@ -5,28 +5,17 @@ namespace Diamond.Domain.Indicator
     public class IndicatorParameter
     {
         /// <summary>
-        /// از تاریخ 
+        /// مقادیر مربوط به استراتژی کراس ایچی موکو
         /// </summary>
-        public DateOnly FromDate { get; set; }
+        public CrossIchimokoIndicatorParameter CrossIchimokoParameter { get; set; }
+
         /// <summary>
-        /// تا تاریخ 
+        /// مقادیر مربوط به استراتژی قیمت و ابر ایچی موکو
         /// </summary>
-        public DateOnly ToDate { get; set; }
+        public PriceIchimokoCloudIndicatorParameter PriceIchimokoCloudParameter { get; set; }
         /// <summary>
-        /// ترند صعودی یا نزولی
+        /// مقادیر مربوط به استراتژی نقاط حمایت مقاومت
         /// </summary>
-        public CrossEnum Trend { get; set; }
-        /// <summary>
-        /// مقایسه قیمت
-        /// </summary>
-        public ComparisonPriceTypeEnum ComparisonPriceType { get; set; }
-        /// <summary>
-        /// ابر ایچیموکو
-        /// </summary>
-        public IchimokoCloudColorEnum IchimokoCloudColor { get; set; }
-        /// <summary>
-        /// نوع قیمت
-        /// </summary>
-        public CandelPriceEnum CandelPriceType { get; set; }
+        public PivotPointsIndicatorParameter PivotPointsParameter { get; set; }
     }
 }

@@ -10,6 +10,10 @@ namespace Diamond.Services.BusinessServiceDto.TseTmcControllerDtos
         /// </summary>
         public bool TakingSymbolsAndCandles { get; set; }
         /// <summary>
+        /// PivotPoints استراتژی 
+        /// </summary>
+        public bool PivotPointsStrategy { get; set; }
+        /// <summary>
         /// کراس خط های ایچی موکو
         /// </summary>
         public bool CrossIchimoko { get; set; }

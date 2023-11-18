@@ -3,9 +3,9 @@ using Diamond.Domain.Indicator;
 
 namespace Diamond.Services.Indicator
 {
-    public class IchimokuIndicatorModel : IndicatorCandel
+    public class PivotPointsIndicatorModel : IndicatorCandel
     {
-        public IchimokuIndicatorModel(CandelPriceEnum candelPrice, IndicatorCandel indicatorCandel)
+        public PivotPointsIndicatorModel(CandelPriceEnum candelPrice, IndicatorCandel indicatorCandel)
         {
             High = indicatorCandel.High;
             Low = indicatorCandel.Low;
@@ -23,10 +23,6 @@ namespace Diamond.Services.Indicator
         }
 
         // فقط خواندی است        
-        public decimal SelectedPrice { get;}
-        public CrossEnum Trend { get; set; }
-        public IchimokoCloudColorEnum CloudColor { get; set; }
-        public PriceAboveBelowEnum PriceAboveBelow { get; set; }   
-        public ComparisonPriceTypeEnum ComparisonType { get; set; }
+        public decimal SelectedPrice { get; }
     }
 }

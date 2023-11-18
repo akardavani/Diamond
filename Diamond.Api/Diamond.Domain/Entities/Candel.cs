@@ -1,11 +1,4 @@
-﻿using Diamond.Domain.Enums;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Diamond.Domain.Entities
+﻿namespace Diamond.Domain.Entities
 {
     public class Candel
     {
@@ -18,6 +11,7 @@ namespace Diamond.Domain.Entities
         public decimal Volume { get; set; }
         public int Timeframe { get; set; }
         public DateTime Date { get; set; }
+        public string PersianDate { get; set; }
         public long Timestamp { get; set; }
         public decimal NetValue { get; set; }
     }

@@ -30,5 +30,7 @@ namespace Diamond.Utils.BrokerExtention
                 _ => throw new ArgumentException("Invalid comparison type."),
             };
         }
+
+
     }
 }

@@ -10,8 +10,9 @@ namespace Diamond.Services.Strategy
 {
     public class CrossIchimokoStrategy : IStrategyImplementation
     {
-        public List<IndicatorCandel> FindSymbols(List<IndicatorCandel> ichimokuCandles, IndicatorParameter parameter)
+        public List<IndicatorCandel> FindSymbols(List<IndicatorCandel> ichimokuCandles, IndicatorParameter indicatorParameter)
         {
+            var parameter = indicatorParameter.CrossIchimokoParameter;
             var candels = ichimokuCandles
                 .Select(e => new IchimokuIndicatorModel(parameter.CandelPriceType, e))
                 .ToList();
@@ -31,7 +32,7 @@ namespace Diamond.Services.Strategy
             //    })
             //    .ToList();
 
-            var crosses = FindCross_SenkouSpanA_SenkouSpanB(candels, parameter.FromDate,parameter.ToDate);
+            var crosses = FindCross_SenkouSpanA_SenkouSpanB(candels, parameter.FromDate, parameter.ToDate);
 
             var list = (parameter.Trend == CrossEnum.Up) 
                 ? FindCrossUp(crosses) 

@@ -28,6 +28,10 @@ namespace Diamond.Services.Strategy
             {
                 var find = candels.FindAll(e => e.InstrumentId == instrument);
 
+                if (instrument== "IRO1TAYD0001")
+                {
+
+                }
                 var symbol = _strategy
                 .FindSymbols(find, _indicatorParameter)
                 .ToList();

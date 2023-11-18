@@ -26,7 +26,8 @@ namespace Diamond.Domain.Indicator
                 CandelPriceEnum.Close => Close,
                 CandelPriceEnum.High => High,
                 CandelPriceEnum.Low => Low,
-                _ => throw new ArgumentException("Invalid selected price."),
+                _ => Close,
+                //_ => throw new ArgumentException("Invalid selected price."),
             };
         }
     }    
