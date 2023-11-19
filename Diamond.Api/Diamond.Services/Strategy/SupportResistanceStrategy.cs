@@ -27,6 +27,8 @@ namespace Diamond.Services.Strategy
 
             FindPercentageDifference(supportResistance, candels);
 
+            var supportResistance1 = supportResistance.Where(e => e.PercentageDifference < 5M).ToList();
+
             return candels
                     .Where(e => e.DateOnly >= parameter.FromDate && e.DateOnly < parameter.ToDate)
                     .Select(e => new IndicatorCandel
@@ -140,7 +142,7 @@ namespace Diamond.Services.Strategy
 
             foreach (var support in supportResistance)
             {
-                support.PercentageDifference = Math.Abs(candle.Close - support.Price) / candle.Close;
+                support.PercentageDifference = (Math.Abs(candle.Close - support.Price) / candle.Close) * 100;
             }
         }
     }
