@@ -3,9 +3,9 @@ using Diamond.Domain.Indicator;
 
 namespace Diamond.Services.Indicator
 {
-    public class PivotPointsIndicatorModel : IndicatorCandel
+    public class SupportResistanceIndicatorModel : IndicatorCandel
     {
-        public PivotPointsIndicatorModel(CandelPriceEnum candelPrice, IndicatorCandel indicatorCandel)
+        public SupportResistanceIndicatorModel(CandelPriceEnum candelPrice, IndicatorCandel indicatorCandel)
         {
             High = indicatorCandel.High;
             Low = indicatorCandel.Low;

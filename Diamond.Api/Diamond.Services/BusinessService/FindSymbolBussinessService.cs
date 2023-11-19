@@ -108,7 +108,7 @@ namespace Diamond.Services.BusinessService
             {
                 var indicatorParameter = new IndicatorParameter
                 {
-                    PivotPointsParameter = new PivotPointsIndicatorParameter
+                    PivotPointsParameter = new SupportResistanceIndicatorParameter
                     {
                         FromDate = request.FromDate,
                         ToDate = request.ToDate,
@@ -116,7 +116,7 @@ namespace Diamond.Services.BusinessService
                     }
                 };
 
-                var strategy = new StrategyImplementation(new PivotPointsStrategy(), indicatorParameter);
+                var strategy = new StrategyImplementation(new SupportResistanceStrategy(), indicatorParameter);
                 symbols = strategy.FindSymbols(indicatorCandel);
             }
         }

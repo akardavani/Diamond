@@ -16,6 +16,6 @@ namespace Diamond.Domain.Indicator
         /// <summary>
         /// مقادیر مربوط به استراتژی نقاط حمایت مقاومت
         /// </summary>
-        public PivotPointsIndicatorParameter PivotPointsParameter { get; set; }
+        public SupportResistanceIndicatorParameter PivotPointsParameter { get; set; }
     }
 }
