@@ -6,9 +6,12 @@ using Diamond.Services.CommonService;
 using Diamond.Services.TseTmcClient;
 using Diamond.Utils.BrokerExtention;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Persistence.Context;
 using System;
+using System.Diagnostics.Metrics;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Security.Principal;
 using System.Threading;
 using System.Threading.Tasks;
@@ -39,7 +42,7 @@ namespace Diamond.Services.BusinessService
 
             var list = await _tseService.GetInstrumentList(cancellation);
 
-            var instruments = await _dbContext.Set<Instrument>()
+            var instruments = await _dbContext.Set<Domain.Entities.Instrument>()
                 .ToListAsync(cancellationToken: cancellation);
 
             var instrumentExtraInfos = await _dbContext.Set<InstrumentExtraInfo>()
@@ -93,7 +96,7 @@ namespace Diamond.Services.BusinessService
                     var instrumentEntity = instruments.FirstOrDefault(x => x.InstrumentId == item.InstrumentId);
                     if (instrumentEntity == null)
                     {
-                        instrumentEntity = new Instrument();
+                        instrumentEntity = new Domain.Entities.Instrument();
                         _dbContext.Add(instrumentEntity);
                     }
 
@@ -132,20 +135,19 @@ namespace Diamond.Services.BusinessService
 
             var ins = await _instrument.GetAllCandles(cancellation);
             var mustDelet = ins
-                //.Where(e => e.Date.Date == DateTime.Today.Date)
                 .GroupBy(e => e.InstrumentId)
                 .Select(e => e.Key)
                 .ToList();
 
             instruments.RemoveAll(item => mustDelet.Contains(item));
 
-            //var candels = await _dbContext
-            //    .Set<Candel>()
-            //    .ToListAsync(cancellation);
-
             var timeframe = TimeframeEnum.Daily;
             var response = 1;
             var count = 0;
+
+            var Candels = await _dbContext.Set<Candel>()
+                .Where(e => e.Timeframe == (int)timeframe)
+                .ToListAsync(cancellationToken: cancellation);
 
             foreach (var instrument in instruments)
             {
@@ -157,35 +159,38 @@ namespace Diamond.Services.BusinessService
 
                 foreach (var item in data.Candels)
                 {
-                    var candel = new Candel
+                    var entity = Candels.FirstOrDefault(x => x.InstrumentId == instrument 
+                    && x.Date == item.Date
+                    && x.Timeframe == (int)timeframe);
+
+                    if (entity == null)
                     {
-                        InstrumentId = instrument,
-                        Open = item.Open,
-                        Close = item.Close,
-                        High = item.High,
-                        Low = item.Low,
-                        Timeframe = (int)timeframe,
-                        Date = item.Date,
-                        PersianDate = item.Date.ToPersian("yyyy/MM/dd"),
-                        Timestamp = item.Timestamp,
-                        NetValue = item.NetValue,
-                        Volume = item.Volume,
+                        entity = new Candel()
+                        {                            
+                            InstrumentId = instrument,
+                            Date = item.Date
+                        };
+                        _dbContext.Add(entity);
+                    }
 
-                    };
-
-                    _dbContext.Set<Candel>().Add(candel);
+                    entity.Open = item.Open;
+                    entity.Close = item.Close;
+                    entity.High = item.High;
+                    entity.Low = item.Low;
+                    entity.Timeframe = (int)timeframe;
+                    entity.PersianDate = item.Date.ToPersian("yyyy/MM/dd");
+                    entity.Timestamp = item.Timestamp;
+                    entity.NetValue = item.NetValue;
+                    entity.Volume = item.Volume;
                 }
 
                 response = await _dbContext.SaveChangesAsync(cancellation);
 
                 if (count % 50 == 0)
                 {
-                    
                     Thread.Sleep(5 * 1000);
                 }
             }
-
-            //response = await _dbContext.SaveChangesAsync(cancellation);
 
             return true;
         }
