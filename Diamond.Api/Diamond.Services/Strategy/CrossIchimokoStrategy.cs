@@ -1,15 +1,38 @@
 ﻿using Diamond.Domain.Enums;
 using Diamond.Domain.Indicator;
+using Diamond.Domain.Models.SupportResistance;
 using Diamond.Services.Indicator;
 using Skender.Stock.Indicators;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.Json;
 
 namespace Diamond.Services.Strategy
 {
     public class CrossIchimokoStrategy : IStrategyImplementation
     {
+        public string Calculate(List<IndicatorCandel> candels, IndicatorParameter indicatorParameter)
+        {
+            var instruments = candels
+                .GroupBy(e => e.InstrumentId)
+                .Select(e => e.Key)
+                .ToList();
+
+            var reasonlist = new List<SupportResistancePercentageDifference>();
+
+            foreach (var instrument in instruments)
+            {
+                var find = candels.FindAll(e => e.InstrumentId == instrument);
+
+                var supportResistance = FindSymbols(find, indicatorParameter)
+                .ToList();
+            }
+
+            var json = JsonSerializer.Serialize(reasonlist);
+
+            return json;
+        }
         public List<IndicatorCandel> FindSymbols(List<IndicatorCandel> ichimokuCandles, IndicatorParameter indicatorParameter)
         {
             var parameter = indicatorParameter.CrossIchimokoParameter;
@@ -37,6 +60,8 @@ namespace Diamond.Services.Strategy
             var list = (parameter.Trend == CrossEnum.Up) 
                 ? FindCrossUp(crosses) 
                 : FindCrossDown(crosses);
+
+            //var json = JsonSerializer.Serialize(list);
 
             return list;
         }
@@ -119,5 +144,7 @@ namespace Diamond.Services.Strategy
                     })
                     .ToList();
         }
+
+        
     }
 }

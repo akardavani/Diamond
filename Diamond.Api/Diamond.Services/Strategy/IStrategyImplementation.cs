@@ -5,6 +5,8 @@ namespace Diamond.Services.Strategy
 {
     public interface IStrategyImplementation
     {
-        List<IndicatorCandel> FindSymbols(List<IndicatorCandel> candles, IndicatorParameter indicatorParameter);
+        //string FindSymbols(List<IndicatorCandel> candles, IndicatorParameter indicatorParameter);
+        string Calculate(List<IndicatorCandel> candles, IndicatorParameter indicatorParameter);
+        
     }
 }

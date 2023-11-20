@@ -15,42 +15,44 @@ namespace Diamond.Services.Strategy
             _indicatorParameter = indicatorParameter;
         }
 
-        public List<IndicatorCandel> FindSymbols(List<IndicatorCandel> candels)
+        public string FindSymbols(List<IndicatorCandel> candels)
         {
-            var instruments = candels
-                .GroupBy(e => e.InstrumentId)
-                .Select(e => e.Key)
-                .ToList();
+            var symbol = _strategy.Calculate(candels, _indicatorParameter);
 
-            var reasonlist = new List<IndicatorCandel>();
+            //var instruments = candels
+            //    .GroupBy(e => e.InstrumentId)
+            //    .Select(e => e.Key)
+            //    .ToList();
 
-            foreach (var instrument in instruments)
-            {
-                var find = candels.FindAll(e => e.InstrumentId == instrument);
+            //var reasonlist = new List<IndicatorCandel>();
 
-                if (instrument== "IRO1TAYD0001")
-                {
+            //foreach (var instrument in instruments)
+            //{
+            //    var find = candels.FindAll(e => e.InstrumentId == instrument);
 
-                }
-                var symbol = _strategy
-                .FindSymbols(find, _indicatorParameter)
-                .ToList();
+            //    if (instrument== "IRO1TAYD0001")
+            //    {
 
-                if (symbol is not null)
-                {
-                    if (symbol.Count > 0)
-                    {
-                        reasonlist.AddRange(symbol);
-                    }
-                }
-            }
+            //    }
+            //    var symbol = _strategy
+            //    .Calculate(find, _indicatorParameter)
+            //    .ToList();
 
-            var instrumentList = reasonlist
-                .GroupBy(e => e.InstrumentId)
-                .Select(e => e.Key)
-                .ToList();
+            //    if (symbol is not null)
+            //    {
+            //        if (symbol.Count > 0)
+            //        {
+            //            //reasonlist.AddRange(symbol);
+            //        }
+            //    }
+            //}
 
-            return reasonlist;
+            //var instrumentList = reasonlist
+            //    .GroupBy(e => e.InstrumentId)
+            //    .Select(e => e.Key)
+            //    .ToList();
+
+            return symbol;
         }
     }
 }

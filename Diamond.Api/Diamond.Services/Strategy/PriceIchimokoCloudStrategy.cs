@@ -4,11 +4,34 @@ using Diamond.Services.Indicator;
 using Skender.Stock.Indicators;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.Json;
 
 namespace Diamond.Services.Strategy
 {
     public class PriceIchimokoCloudStrategy : IStrategyImplementation
     {
+        public string Calculate(List<IndicatorCandel> candels, IndicatorParameter indicatorParameter)
+        {
+            var instruments = candels
+                .GroupBy(e => e.InstrumentId)
+                .Select(e => e.Key)
+                .ToList();
+
+            var reasonlist = new List<IndicatorCandel>();
+
+            foreach (var instrument in instruments)
+            {
+                var find = candels.FindAll(e => e.InstrumentId == instrument);
+
+                var supportResistance = FindSymbols(find, indicatorParameter)
+                .ToList();
+            }
+
+            var json = JsonSerializer.Serialize(reasonlist);
+
+            return json;
+        }
+
         public List<IndicatorCandel> FindSymbols(List<IndicatorCandel> ichimokuCandles, IndicatorParameter indicatorParameter)
         {
             var parameter = indicatorParameter.PriceIchimokoCloudParameter;
@@ -29,7 +52,7 @@ namespace Diamond.Services.Strategy
             }
 
             //var pp = parameter.ComparisonPriceType
-            return candels
+            var list = candels
                     .Where(e => e.DateOnly >= parameter.FromDate && e.DateOnly < parameter.ToDate)
                     .Select(e => new IndicatorCandel
                     {
@@ -45,6 +68,9 @@ namespace Diamond.Services.Strategy
                     })
                     .ToList();
 
+            //var json = JsonSerializer.Serialize(list);
+            
+            return list;
         }
 
         private void FindCloudColor(List<IchimokuIndicatorModel> candels)

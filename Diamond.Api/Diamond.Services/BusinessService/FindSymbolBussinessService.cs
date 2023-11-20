@@ -2,7 +2,6 @@
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using Diamond.Domain.Enums;
 using Diamond.Domain.Indicator;
 using Diamond.Services.BusinessServiceDto.TseTmcControllerDtos;
 using Diamond.Services.CommonService;
@@ -13,14 +12,17 @@ namespace Diamond.Services.BusinessService
     public class FindSymbolBussinessService : IBusinessService
     {
         private readonly InstrumentInfoBusinessService _instrumentInfoBusinessService;
+        //private readonly SupportResistanceBusinessService _supportResistanceBusiness;
         private readonly TseInstrumentBussinessService _tseInstrument;
         private readonly CommonInstrument _instrument;
 
         public FindSymbolBussinessService(InstrumentInfoBusinessService instrumentInfoBusinessService,
+          //  SupportResistanceBusinessService supportResistanceBusiness,
             TseInstrumentBussinessService tseInstrument,
             CommonInstrument instrument)
         {
             _instrumentInfoBusinessService = instrumentInfoBusinessService;
+            //_supportResistanceBusiness = supportResistanceBusiness;
             _tseInstrument = tseInstrument;
             _instrument = instrument;
         }
@@ -58,11 +60,11 @@ namespace Diamond.Services.BusinessService
                     })
                     .ToList();
 
-                PivotPoints(request, symbols, indicatorCandel, cancellation);
+                SupportResistances(request, indicatorCandel);
 
-                CrossIchimoko(request, symbols, indicatorCandel, cancellation);
+                CrossIchimoko(request, indicatorCandel);
 
-                PriceIchimokoCloud(request, symbols, indicatorCandel, cancellation);
+                PriceIchimokoCloud(request, indicatorCandel);
 
                 //if (request.CrossIchimoko)
                 //{
@@ -102,7 +104,26 @@ namespace Diamond.Services.BusinessService
 
 
 
-        private void PivotPoints(FindSymbolDto request, List<IndicatorCandel> symbols, List<IndicatorCandel> indicatorCandel, CancellationToken cancellation)
+        //private void SupportResistances(FindSymbolDto request, List<IndicatorCandel> indicatorCandel)
+        //{
+        //    if (request.PivotPointsStrategy)
+        //    {
+        //        var indicatorParameter = new IndicatorParameter
+        //        {
+        //            PivotPointsParameter = new SupportResistanceIndicatorParameter
+        //            {
+        //                FromDate = request.FromDate,
+        //                ToDate = request.ToDate,
+        //                CandelPriceType = request.CandelPriceType
+        //            }
+        //        };
+
+        //        var ss = _supportResistanceBusiness.Calculate(indicatorParameter, indicatorCandel);
+        //    }
+        //}
+
+
+        private void SupportResistances(FindSymbolDto request, List<IndicatorCandel> indicatorCandel)
         {
             if (request.PivotPointsStrategy)
             {
@@ -117,11 +138,11 @@ namespace Diamond.Services.BusinessService
                 };
 
                 var strategy = new StrategyImplementation(new SupportResistanceStrategy(), indicatorParameter);
-                symbols = strategy.FindSymbols(indicatorCandel);
+                var symbols = strategy.FindSymbols(indicatorCandel);
             }
         }
 
-        private void CrossIchimoko(FindSymbolDto request, List<IndicatorCandel> symbols, List<IndicatorCandel> indicatorCandel, CancellationToken cancellation)
+        private void CrossIchimoko(FindSymbolDto request, List<IndicatorCandel> indicatorCandel)
         {
             if (request.CrossIchimoko)
             {
@@ -136,11 +157,11 @@ namespace Diamond.Services.BusinessService
                 };
 
                 var strategy = new StrategyImplementation(new CrossIchimokoStrategy(), indicatorParameter);
-                symbols = strategy.FindSymbols(indicatorCandel);
+                var symbols = strategy.FindSymbols(indicatorCandel);
             }
         }
 
-        private void PriceIchimokoCloud(FindSymbolDto request, List<IndicatorCandel> symbols, List<IndicatorCandel> indicatorCandel, CancellationToken cancellation)
+        private void PriceIchimokoCloud(FindSymbolDto request, List<IndicatorCandel> indicatorCandel)
         {
             if (request.PriceAboveBelow is not null)
             {
@@ -157,8 +178,8 @@ namespace Diamond.Services.BusinessService
                 };
 
                 var strategy = new StrategyImplementation(new PriceIchimokoCloudStrategy(), indicatorParameter);
-                symbols = strategy.FindSymbols(indicatorCandel);
+                var symbols = strategy.FindSymbols(indicatorCandel);
             }
-        }
+        }        
     }
 }
