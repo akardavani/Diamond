@@ -39,50 +39,36 @@ namespace Diamond.Services.Strategy
 
             string json = JsonConvert.SerializeObject(reasonlist);
             //var json = JsonSerializer.Serialize(reasonlist);
-            //JsonConvert.SerializeObject(reasonlist);
 
             return json;
         }
 
         private List<SupportResistancePercentageDifference> FindSymbols(List<IndicatorCandel> candles, IndicatorParameter indicatorParameter)
         {
-            var parameter = indicatorParameter.PivotPointsParameter;
+            var parameter = indicatorParameter.SupportResistancesParameter;
 
             var candels = candles
                 .Select(e => new SupportResistanceIndicatorModel(parameter.CandelPriceType, e))
                 .ToList();
 
-            //pivotPoints(candels);
             int lookbackPeriod = 300;
-            decimal percentageDifference = 5M;
 
             var supportResistance = new List<SupportResistancePercentageDifference>();
             supportResistance.AddRange(FindResistance(candels, lookbackPeriod));
             supportResistance.AddRange(FindSupport(candels, lookbackPeriod));
 
-            FindPercentageDifference(supportResistance, candels, percentageDifference);
+            FindPercentageDifference(supportResistance, candels, parameter);
 
             return supportResistance;
-            //return candels
-            //        .Where(e => e.DateOnly >= parameter.FromDate && e.DateOnly < parameter.ToDate)
-            //        .Select(e => new IndicatorCandel
-            //        {
-            //            InstrumentId = e.InstrumentId,
-            //            Close = e.Close,
-            //            Date = e.Date,
-            //            High = e.High,
-            //            Low = e.Low,
-            //            NetValue = e.NetValue,
-            //            Open = e.Open,
-            //            UnixTimestamp = e.UnixTimestamp,
-            //            Volume = e.Volume
-            //        })
-            //        .ToList();
         }
 
         private List<SupportResistancePercentageDifference> FindResistance(List<SupportResistanceIndicatorModel> candels, int lookbackPeriod)
         {
             var resistance = new List<SupportResistanceIndicatorModel>();
+
+            // lookbackPeriod = 300
+            // توی کل کندل ها، تکه های 300 تایی جدا میکنیم و مینیمم آنها را می یابیم
+            // وبعد یک کندل جلو میرویم و دوباره این کار را انجام میدهیم
 
             for (int i = 0; i < candels.Count; i++)
             {
@@ -102,17 +88,20 @@ namespace Diamond.Services.Strategy
                 resistance.AddRange(canMax);
             }
 
+            // تمام ماکسیمم ها را گروپ میزنیم و براساس تعداد دفعه ها، سورت میکنیم
+            // بیشترین دفعات یعنی احتمالا نقاط مقاومت، این نقاط هستند
+            // و بعد 4 نقطه مقاومت نهایی را پیدا میکنیم
             var resistanceGroups = resistance
                .GroupBy(e => e.Close)
                .Select(group => new SupportResistancePercentageDifference
                {
                    InstrumentId = group.Max(e => e.InstrumentId),
                    Price = group.Key,
-                   Count = group.Count(),
+                   Count = group.Count(), // تعداد دفعات ماکسیمم (مقاومت) بودن
                    Date = group.Max(e => e.Date),
-                   SupportResistance = SupportResistanceTypeEnum.Resistance
+                   SupportResistanceType = SupportResistanceTypeEnum.Resistance
                })
-               .Where(e => e.Count > 5)
+               .Where(e => e.Count > 15)
                .OrderByDescending(e => e.Count)
                .ThenByDescending(e => e.Date)
                .Take(4)  // 4 تای آخر
@@ -125,6 +114,7 @@ namespace Diamond.Services.Strategy
         {
             var support = new List<SupportResistanceIndicatorModel>();
 
+            // lookbackPeriod = 300
             // توی کل کندل ها، تکه های 300 تایی جدا میکنیم و مینیمم آنها را می یابیم
             // وبعد یک کندل جلو میرویم و دوباره این کار را انجام میدهیم
 
@@ -155,11 +145,11 @@ namespace Diamond.Services.Strategy
                 {
                     InstrumentId = group.Max(e => e.InstrumentId),
                     Price = group.Key,
-                    Count = group.Count(),
+                    Count = group.Count(), // تعداد دفعات مینیم (حمایت) بودن
                     Date = group.Max(e => e.Date),
-                    SupportResistance = SupportResistanceTypeEnum.Support
+                    SupportResistanceType = SupportResistanceTypeEnum.Support
                 })
-                .Where(e => e.Count > 5)
+                .Where(e => e.Count > 15) 
                 .OrderByDescending(e => e.Count)
                 .ThenByDescending(e => e.Date)
                 .Take(4) // 4 تای آخر
@@ -170,11 +160,16 @@ namespace Diamond.Services.Strategy
 
         private void FindPercentageDifference(List<SupportResistancePercentageDifference> supportResistance,
             List<SupportResistanceIndicatorModel> candles,
-            decimal percentageDifference)
+            SupportResistanceIndicatorParameter parameter)
         {
             var candle = candles
                 .OrderByDescending(e => e.Date)
                 .FirstOrDefault();
+
+            //if (candle.InstrumentId == "IRO3IZIZ0001")
+            //{
+
+            //}
 
             foreach (var support in supportResistance)
             {
@@ -182,7 +177,9 @@ namespace Diamond.Services.Strategy
             }
 
             var remove = supportResistance
-                .Where(e => e.PercentageDifference > percentageDifference)
+                .Where(e => e.PercentageDifference > parameter.PercentageDifference
+                        || e.SupportResistanceType != parameter.SupportResistanceType
+                        || e.Date < DateTime.Today.AddDays(-1))
             .ToList();
 
             supportResistance.RemoveAll(l => remove.Contains(l));

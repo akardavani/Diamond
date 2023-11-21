@@ -8,7 +8,7 @@ namespace Diamond.Domain.Models.SupportResistance
         public decimal Price { get; set; }
         public int Count { get; set; }
         public DateTime Date { get; set; }
-        public SupportResistanceTypeEnum SupportResistance { get; set; }
+        public SupportResistanceTypeEnum SupportResistanceType { get; set; }
         public decimal PercentageDifference { get; set; }
     }
 }

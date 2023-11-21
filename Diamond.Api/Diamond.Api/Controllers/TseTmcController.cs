@@ -36,14 +36,16 @@ namespace Diamond.API.Controllers
             {
                 TakingSymbolsAndCandles = request.TakingSymbolsAndCandles,
                 CrossIchimoko = request.CrossIchimokoStrategy,
-                PivotPointsStrategy = request.PivotPointsStrategy,
+                SupportResistancesStrategy = request.SupportResistancesStrategy,
                 FromDate = new DateOnly(request.FromDate.Year, request.FromDate.Month, request.FromDate.Day),
                 ToDate = new DateOnly(request.ToDate.Year, request.ToDate.Month, request.ToDate.Day),
                 Trend = request.Trend,
                 CandelPriceType = request.CandelPriceType,
                 ComparisonPriceType = request.ComparisonPriceType,
                 PriceAboveBelow = request.PriceAboveBelow,
-                IchimokoCloudColor = request.IchimokoCloudColor                
+                IchimokoCloudColor = request.IchimokoCloudColor,
+                SupportResistanceType = request.SupportResistanceType,
+                PercentageDifference = request.PercentageDifference,
             }, cancellation);
 
             return symbols;

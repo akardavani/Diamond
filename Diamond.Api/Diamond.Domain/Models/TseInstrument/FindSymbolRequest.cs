@@ -7,7 +7,7 @@ namespace Diamond.Domain.Models.TseInstrument
         /// <summary>
         /// PivotPoints استراتژی 
         /// </summary>
-        public bool PivotPointsStrategy { get; set; }
+        public bool SupportResistancesStrategy { get; set; }
         /// <summary>
         /// گرفتن نمادها و کندل ها
         /// </summary>
@@ -44,5 +44,15 @@ namespace Diamond.Domain.Models.TseInstrument
         /// ابر ایچیموکو
         /// </summary>
         public IchimokoCloudColorEnum IchimokoCloudColor { get; set; }
+
+
+        /// <summary>
+        /// درصد اختلاف تا مقاومت یا حمایت
+        /// </summary>
+        public decimal PercentageDifference { get; set; }
+        /// <summary>
+        /// حمایت یا مقاومت
+        /// </summary>
+        public SupportResistanceTypeEnum SupportResistanceType { get; set; }
     }
 }

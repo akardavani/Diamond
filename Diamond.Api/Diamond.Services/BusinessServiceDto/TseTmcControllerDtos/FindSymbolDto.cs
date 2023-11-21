@@ -10,9 +10,9 @@ namespace Diamond.Services.BusinessServiceDto.TseTmcControllerDtos
         /// </summary>
         public bool TakingSymbolsAndCandles { get; set; }
         /// <summary>
-        /// PivotPoints استراتژی 
+        /// SupportResistance استراتژی 
         /// </summary>
-        public bool PivotPointsStrategy { get; set; }
+        public bool SupportResistancesStrategy { get; set; }
         /// <summary>
         /// کراس خط های ایچی موکو
         /// </summary>
@@ -45,5 +45,13 @@ namespace Diamond.Services.BusinessServiceDto.TseTmcControllerDtos
         /// ابر ایچیموکو
         /// </summary>
         public IchimokoCloudColorEnum IchimokoCloudColor { get; set; }
+        /// <summary>
+        /// درصد اختلاف تا مقاومت یا حمایت
+        /// </summary>
+        public decimal PercentageDifference { get; set; }
+        /// <summary>
+        /// حمایت یا مقاومت
+        /// </summary>
+        public SupportResistanceTypeEnum SupportResistanceType { get; set; }
     }
 }

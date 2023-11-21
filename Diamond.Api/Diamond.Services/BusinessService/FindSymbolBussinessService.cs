@@ -17,7 +17,7 @@ namespace Diamond.Services.BusinessService
         private readonly CommonInstrument _instrument;
 
         public FindSymbolBussinessService(InstrumentInfoBusinessService instrumentInfoBusinessService,
-          //  SupportResistanceBusinessService supportResistanceBusiness,
+            //  SupportResistanceBusinessService supportResistanceBusiness,
             TseInstrumentBussinessService tseInstrument,
             CommonInstrument instrument)
         {
@@ -125,15 +125,17 @@ namespace Diamond.Services.BusinessService
 
         private void SupportResistances(FindSymbolDto request, List<IndicatorCandel> indicatorCandel)
         {
-            if (request.PivotPointsStrategy)
+            if (request.SupportResistancesStrategy)
             {
                 var indicatorParameter = new IndicatorParameter
                 {
-                    PivotPointsParameter = new SupportResistanceIndicatorParameter
+                    SupportResistancesParameter = new SupportResistanceIndicatorParameter
                     {
                         FromDate = request.FromDate,
                         ToDate = request.ToDate,
-                        CandelPriceType = request.CandelPriceType
+                        CandelPriceType = request.CandelPriceType,
+                        PercentageDifference = request.PercentageDifference,
+                        SupportResistanceType = request.SupportResistanceType
                     }
                 };
 
@@ -180,6 +182,6 @@ namespace Diamond.Services.BusinessService
                 var strategy = new StrategyImplementation(new PriceIchimokoCloudStrategy(), indicatorParameter);
                 var symbols = strategy.FindSymbols(indicatorCandel);
             }
-        }        
+        }
     }
 }

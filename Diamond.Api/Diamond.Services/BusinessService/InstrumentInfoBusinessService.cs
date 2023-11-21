@@ -168,7 +168,8 @@ namespace Diamond.Services.BusinessService
                         entity = new Candel()
                         {                            
                             InstrumentId = instrument,
-                            Date = item.Date
+                            Date = item.Date,
+                            Timeframe = (int)timeframe
                         };
                         _dbContext.Add(entity);
                     }
@@ -177,7 +178,6 @@ namespace Diamond.Services.BusinessService
                     entity.Close = item.Close;
                     entity.High = item.High;
                     entity.Low = item.Low;
-                    entity.Timeframe = (int)timeframe;
                     entity.PersianDate = item.Date.ToPersian("yyyy/MM/dd");
                     entity.Timestamp = item.Timestamp;
                     entity.NetValue = item.NetValue;
