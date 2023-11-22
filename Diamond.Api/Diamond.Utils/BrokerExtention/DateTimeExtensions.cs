@@ -23,6 +23,11 @@ namespace Diamond.Utils.BrokerExtention
             return DateOnly.FromDateTime(dateTime);
         }
 
+        public static DateTime ToDate(this DateTime dateTime)
+        {
+            return new DateTime(dateTime.Year, dateTime.Month, dateTime.Day, 0, 0, 0);
+        }
+
         public static DateOnly? ToDateOnly(this DateTime? dateTime)
         {
             return dateTime is null ?

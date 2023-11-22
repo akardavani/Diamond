@@ -100,8 +100,6 @@ namespace Diamond.Services.CandelClient
             catch (Exception e)
             {
                 return new List<CandelModel>();
-                //Extention.Logging(Environment.NewLine + " Error => " + e.Message +
-                //Environment.NewLine + url);
             }
         }
 

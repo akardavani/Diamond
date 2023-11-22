@@ -1,4 +1,5 @@
-﻿using Diamond.Domain.Entities;
+﻿using Diamond.Domain;
+using Diamond.Domain.Entities;
 using Diamond.Domain.Entities.TsePublic;
 using Diamond.Domain.Enums;
 using Diamond.Services.CandelClient;
@@ -7,8 +8,10 @@ using Diamond.Services.TseTmcClient;
 using Diamond.Utils.BrokerExtention;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using Microsoft.VisualBasic;
 using Persistence.Context;
 using System;
+using System.Collections.Generic;
 using System.Diagnostics.Metrics;
 using System.Linq;
 using System.Runtime.InteropServices;
@@ -133,44 +136,45 @@ namespace Diamond.Services.BusinessService
         {
             var instruments = await _instrument.GetAllInstrumentIds(cancellation);
 
-            var ins = await _instrument.GetAllCandles(cancellation);
-            var mustDelet = ins
-                .GroupBy(e => e.InstrumentId)
-                .Select(e => e.Key)
-                .ToList();
-
-            instruments.RemoveAll(item => mustDelet.Contains(item));
-
             var timeframe = TimeframeEnum.Daily;
             var response = 1;
             var count = 0;
 
-            var Candels = await _dbContext.Set<Candel>()
-                .Where(e => e.Timeframe == (int)timeframe)
-                .ToListAsync(cancellationToken: cancellation);
+            await RemoveTodayCandles(timeframe, cancellation);
 
+            var candels = await GetAllCandles(timeframe, cancellation);
+            var startDate = GetDate(timeframe);
             foreach (var instrument in instruments)
             {
                 count++;
                 var data = await _candelClientFactory.GetDataByUrl(instrument, 1, timeframe);
 
-                if (data.Candels.Count == 0)
-                    continue;
+                var candleDate = data.Candels
+                    .Where(e => e.Date.ToDate() >= startDate)
+                    .ToList();
 
-                foreach (var item in data.Candels)
+                if (candleDate.Count == 0)
+                    continue;                
+
+                foreach (var item in candleDate)
                 {
-                    var entity = Candels.FirstOrDefault(x => x.InstrumentId == instrument 
+                    var entity = candels.FirstOrDefault(x => x.InstrumentId == instrument
                     && x.Date == item.Date
                     && x.Timeframe == (int)timeframe);
 
-                    if (entity == null)
+                    if (entity is not null)
+                    {
+                        continue;
+                    }
+                    else
                     {
                         entity = new Candel()
-                        {                            
+                        {
                             InstrumentId = instrument,
                             Date = item.Date,
                             Timeframe = (int)timeframe
                         };
+                        //_dbContext.Set<Candel>().Add(entity);
                         _dbContext.Add(entity);
                     }
 
@@ -193,6 +197,54 @@ namespace Diamond.Services.BusinessService
             }
 
             return true;
+        }
+
+        /// <summary>
+        /// حذف کندل های امروز 
+        /// </summary>
+        private async Task<int> RemoveTodayCandles(TimeframeEnum timeframe, CancellationToken cancellation)
+        {
+            var response = 1;
+
+            var all = await _dbContext
+                .Set<Candel>()
+                .Where(x => x.Date >= DateTime.Today
+                    && x.Timeframe == (int)timeframe)
+                .ToListAsync(cancellation);
+
+            if (all.Any() && all.Count > 0)
+            {
+                _dbContext.Set<Candel>().RemoveRange(all);
+                response = await _dbContext.SaveChangesAsync(cancellation);
+            }
+
+            return response;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private DateTime GetDate(TimeframeEnum timeframe)
+        {
+            var date = DateTime.Today;
+            if (timeframe == TimeframeEnum.Daily)
+            {
+                date = date.AddYears(-1);
+            }
+
+            return date;
+        }
+
+        private async Task<List<Candel>> GetAllCandles(TimeframeEnum timeframe, CancellationToken cancellation)
+        {
+            var date = GetDate(timeframe);
+
+            var candels = await _dbContext.Set<Candel>()
+                .Where(e => e.Timeframe == (int)timeframe
+                        && e.Date >= date)
+                .ToListAsync(cancellationToken: cancellation);
+
+            return candels;
         }
     }
 }
