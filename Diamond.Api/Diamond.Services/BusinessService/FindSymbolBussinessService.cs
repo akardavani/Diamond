@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -6,6 +7,7 @@ using Diamond.Domain.Indicator;
 using Diamond.Services.BusinessServiceDto.TseTmcControllerDtos;
 using Diamond.Services.CommonService;
 using Diamond.Services.Strategy;
+using Diamond.Utils;
 
 namespace Diamond.Services.BusinessService
 {
@@ -34,11 +36,7 @@ namespace Diamond.Services.BusinessService
 
             if (request.TakingSymbolsAndCandles)
             {
-                response = await _tseInstrument.SaveTseInstrumentAsync(cancellation);
-                if (response)
-                {
-                    response = await _instrumentInfoBusinessService.GetCandlesInformation(cancellation);
-                }
+                response = await TakingSymbolsAndCandles(cancellation);
             }
 
             if (response)
@@ -122,6 +120,22 @@ namespace Diamond.Services.BusinessService
         //    }
         //}
 
+        private async Task<bool> TakingSymbolsAndCandles(CancellationToken cancellation)
+        {
+            var response = false;
+            // تعداد تکرارها و زمان تأخیر بین تکرارها
+            int retryCount = 3;
+            TimeSpan delayBetweenRetries = TimeSpan.FromSeconds(1);
+
+            await Helper.RetryAsync(async () => await _tseInstrument.SaveTseInstrumentAsync(cancellation), retryCount, delayBetweenRetries);
+            response = await _tseInstrument.SaveTseInstrumentAsync(cancellation);
+            if (response)
+            {
+                response = await _instrumentInfoBusinessService.GetCandlesInformation(cancellation);
+            }
+
+            return response;
+        }
 
         private void SupportResistances(FindSymbolDto request, List<IndicatorCandel> indicatorCandel)
         {

@@ -4,6 +4,7 @@ namespace Diamond.Domain.Models.SupportResistance
 {
     public class SupportResistancePercentageDifference
     {
+        public string Url => $"https://www.nahayatnegar.com/tv/{InstrumentId}";
         public string InstrumentId { get; set; }
         public decimal Price { get; set; }
         public int Count { get; set; }

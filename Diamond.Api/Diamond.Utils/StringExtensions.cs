@@ -369,6 +369,6 @@ namespace Diamond.Utils
                     stringMember.SetValue(obj, ((string)propValue).EncodeHtmlSafe());
                 }
             }
-        }
+        }        
     }
 }
