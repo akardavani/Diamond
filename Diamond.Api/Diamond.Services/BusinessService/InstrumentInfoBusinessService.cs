@@ -132,11 +132,11 @@ namespace Diamond.Services.BusinessService
             return true ? response == 0 : false;
         }
 
-        public async Task<bool> GetCandlesInformation(CancellationToken cancellation)
+        public async Task<bool> GetCandlesInformation(TimeframeEnum timeframe, CancellationToken cancellation)
         {
             var instruments = await _instrument.GetAllInstrumentIds(cancellation);
 
-            var timeframe = TimeframeEnum.Daily;
+            //var timeframe = TimeframeEnum.Daily;
             var response = 1;
             var count = 0;
 
@@ -230,6 +230,10 @@ namespace Diamond.Services.BusinessService
             if (timeframe == TimeframeEnum.Daily)
             {
                 date = date.AddYears(-1);
+            }
+            else if (timeframe == TimeframeEnum.Weekly)
+            {
+                date = date.AddYears(-5);
             }
 
             return date;

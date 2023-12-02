@@ -1,6 +1,6 @@
 ﻿using Diamond.Domain.Enums;
 using Diamond.Domain.Indicator;
-using Diamond.Domain.Models.SupportResistance;
+using Diamond.Domain.Models;
 using Diamond.Services.Indicator;
 using Skender.Stock.Indicators;
 using System;

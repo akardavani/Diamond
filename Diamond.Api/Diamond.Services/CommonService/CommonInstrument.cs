@@ -7,6 +7,7 @@ using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using Diamond.Domain.Entities;
 using System;
+using Diamond.Domain.Enums;
 
 namespace Diamond.Services.CommonService
 {
@@ -42,14 +43,15 @@ namespace Diamond.Services.CommonService
         //    return instruments;
         //}
 
-        public async Task<List<Candel>> GetAllCandles(CancellationToken cancellation)
+        public async Task<List<Candel>> GetAllCandles(TimeframeEnum timeframe ,CancellationToken cancellation)
         {
             var instruments = await GetValidInstruments(cancellation);
 
             var candels = await _dbContext
                 .Set<Candel>()
                 .Where(e => e.InstrumentId.Contains("0001")
-                            && instruments.Contains(e.InstrumentId))
+                        && e.Timeframe.Equals((int)timeframe)
+                        && instruments.Contains(e.InstrumentId))
                 .ToListAsync(cancellation);
 
             return candels;

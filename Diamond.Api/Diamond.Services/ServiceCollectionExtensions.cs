@@ -1,12 +1,9 @@
-﻿using Diamond.Domain.Indicator;
-using Diamond.Domain.Models.SupportResistance;
-using Diamond.Jobs;
+﻿using Diamond.Jobs;
 using Diamond.Services.CandelClient;
 using Diamond.Services.Jobs;
 using Diamond.Services.Strategy;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
-using System.Collections.Generic;
 using System.Linq;
 
 namespace Diamond.Services

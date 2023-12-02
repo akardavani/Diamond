@@ -1,6 +1,6 @@
 ﻿using Diamond.Domain.Enums;
 
-namespace Diamond.Domain.Models.SupportResistance
+namespace Diamond.Domain.Models
 {
     public class SupportResistancePercentageDifference
     {

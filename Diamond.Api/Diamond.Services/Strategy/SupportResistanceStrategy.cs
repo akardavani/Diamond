@@ -1,15 +1,12 @@
-﻿using Diamond.Domain.Entities;
-using Diamond.Domain.Enums;
+﻿using Diamond.Domain.Enums;
 using Diamond.Domain.Indicator;
-using Diamond.Domain.Models.SupportResistance;
+using Diamond.Domain.Models;
 using Diamond.Services.Indicator;
-using Diamond.Utils.BrokerExtention;
 using Newtonsoft.Json;
 using Skender.Stock.Indicators;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection.Metadata;
 
 namespace Diamond.Services.Strategy
 {
@@ -28,15 +25,12 @@ namespace Diamond.Services.Strategy
             {
                 var find = candels.FindAll(e => e.InstrumentId == instrument);
 
-                var supportResistance = FindSymbols(find, indicatorParameter)
-                .ToList();
+                var supportResistance = FindSymbols(find, indicatorParameter);
+                //.ToList();
 
                 if (supportResistance is not null)
                 {
-                    if (supportResistance.Count > 0)
-                    {
-                        reasonlist.AddRange(supportResistance);
-                    }
+                    reasonlist.Add(supportResistance);
                 }
             }
 
@@ -46,7 +40,7 @@ namespace Diamond.Services.Strategy
             return json;
         }
 
-        private List<SupportResistancePercentageDifference> FindSymbols(List<IndicatorCandel> candles, IndicatorParameter indicatorParameter)
+        private SupportResistancePercentageDifference FindSymbols(List<IndicatorCandel> candles, IndicatorParameter indicatorParameter)
         {
             var parameter = indicatorParameter.SupportResistancesParameter;
 
@@ -69,11 +63,10 @@ namespace Diamond.Services.Strategy
 
 
         // https://www.investopedia.com/terms/f/fractal.asp
-        private List<SupportResistancePercentageDifference> FindPercentageDifference(List<SupportResistanceIndicatorModel> candles,
+        private SupportResistancePercentageDifference FindPercentageDifference(List<SupportResistanceIndicatorModel> candles,
             SupportResistanceIndicatorParameter parameter,
             int span)
         {
-
             var list = new List<SupportResistancePercentageDifference>();
 
             List<FractalResult> fractals = candles.GetFractal(span)
@@ -84,6 +77,11 @@ namespace Diamond.Services.Strategy
             var candle = candles
                 .OrderByDescending(e => e.Date)
                 .FirstOrDefault();
+
+            var maxPrice = candles
+                .OrderByDescending(e => e.Date)
+                .Take(200)
+                .Max(e => e.High);
 
             var supportResistance = new List<SupportResistancePercentageDifference>();
 
@@ -114,27 +112,28 @@ namespace Diamond.Services.Strategy
             foreach (var support in supportResistance)
             {
                 support.PercentageDifference = (Math.Abs(candle.Close - support.Price) / candle.Close) * 100;
+                var high = (Math.Abs(candle.Close - maxPrice) / candle.Close) * 100; // فاصله تا سقف
 
-                if (support.PercentageDifference< parameter.PercentageDifference && 
-                    support.SupportResistanceType == parameter.SupportResistanceType &&
-                    support.Date > DateTime.Today.AddDays(-2))
+                if (support.PercentageDifference < parameter.PercentageDifference
+                    && high < parameter.PercentageDifference)
                 {
-                    list.Add(support);
+                    if (parameter.SupportResistanceType != SupportResistanceTypeEnum.Both
+                        && support.SupportResistanceType == parameter.SupportResistanceType)
+                    {
+                        list.Add(support);
+                    }
+                    else
+                    {
+                        list.Add(support);
+                    }
                 }
             }
 
-
-
-            //var remove = supportResistance
-            //    .Where(e => e.PercentageDifference > parameter.PercentageDifference
-            //            || e.SupportResistanceType != parameter.SupportResistanceType
-            //            || e.Date < DateTime.Today.AddDays(-2))
-            //.ToList();
-
-            //supportResistance.RemoveAll(l => remove.Contains(l));
-
-            return list;
+            return list
+                .OrderByDescending(e => e.Date)
+                .FirstOrDefault();
         }
+
 
         //private void FindPercentageDifference(List<SupportResistancePercentageDifference> supportResistance,
         //    List<SupportResistanceIndicatorModel> candles,
