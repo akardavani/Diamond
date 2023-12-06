@@ -1,7 +1,4 @@
-﻿using Diamond.Domain.Indicator;
-using Diamond.Domain.Models.TseInstrument;
-using Diamond.Services.BusinessService;
-using Diamond.Services.BusinessServiceDto.TseTmcControllerDtos;
+﻿using Diamond.Services.BusinessService;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Diamond.API.Controllers
@@ -9,12 +6,10 @@ namespace Diamond.API.Controllers
     public class TseTmcController : ApiBaseController
     {
         private readonly InstrumentInfoBusinessService _businessService;
-        private readonly FindSymbolBussinessService _findSymbol;
 
-        public TseTmcController(InstrumentInfoBusinessService businessService, FindSymbolBussinessService findSymbol)
+        public TseTmcController(InstrumentInfoBusinessService businessService)
         {
             _businessService = businessService;
-            _findSymbol = findSymbol;
         }
 
         [HttpGet]

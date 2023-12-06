@@ -20,8 +20,8 @@ namespace Diamond.Api.Controllers.Candle
         {
             var symbols = await _findSymbol.GetCandelData(new CandleDto
             {
-                TakingSymbolsAndCandles = request.TakingSymbolsAndCandles,
                 TimeFrame = request.TimeFrame,
+                TakeTodayData = request.TakeTodayData
             }, cancellation);
 
             return symbols;

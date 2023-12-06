@@ -2,6 +2,7 @@
 using Diamond.Domain.Entities;
 using Diamond.Domain.Entities.TsePublic;
 using Diamond.Domain.Enums;
+using Diamond.Domain.Models;
 using Diamond.Services.CandelClient;
 using Diamond.Services.CommonService;
 using Diamond.Services.TseTmcClient;
@@ -132,7 +133,7 @@ namespace Diamond.Services.BusinessService
             return true ? response == 0 : false;
         }
 
-        public async Task<bool> GetCandlesInformation(TimeframeEnum timeframe, CancellationToken cancellation)
+        public async Task<bool> GetCandlesInformation(TimeframeEnum timeframe, bool getTodayData, CancellationToken cancellation)
         {
             var instruments = await _instrument.GetAllInstrumentIds(cancellation);
 
@@ -140,21 +141,26 @@ namespace Diamond.Services.BusinessService
             var response = 1;
             var count = 0;
 
+            var candleDate = new List<CandelModel>();
+
+
             await RemoveTodayCandles(timeframe, cancellation);
 
             var candels = await GetAllCandles(timeframe, cancellation);
             var startDate = GetDate(timeframe);
+            var endDate = getTodayData == true ? DateTime.Now : DateTime.Now.AddDays(-1);
+
             foreach (var instrument in instruments)
             {
                 count++;
                 var data = await _candelClientFactory.GetDataByUrl(instrument, 1, timeframe);
 
-                var candleDate = data.Candels
-                    .Where(e => e.Date.ToDate() >= startDate)
+                candleDate = data.Candels
+                    .Where(e => e.Date.ToDate() >= startDate && e.Date.ToDate() < endDate)
                     .ToList();
 
                 if (candleDate.Count == 0)
-                    continue;                
+                    continue;
 
                 foreach (var item in candleDate)
                 {

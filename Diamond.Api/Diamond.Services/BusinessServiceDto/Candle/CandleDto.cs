@@ -5,12 +5,12 @@ namespace Diamond.Services.BusinessServiceDto.Candle
     public class CandleDto
     {
         /// <summary>
-        /// گرفتن نمادها و کندل ها
-        /// </summary>
-        public bool TakingSymbolsAndCandles { get; set; }
-        /// <summary>
         /// تایم فریم گرفتن دیتا
         /// </summary>
         public TimeframeEnum TimeFrame { get; set; }
+        /// <summary>
+        /// گرفتن دیتای امروز
+        /// </summary>
+        public bool TakeTodayData { get; set; }
     }
 }
