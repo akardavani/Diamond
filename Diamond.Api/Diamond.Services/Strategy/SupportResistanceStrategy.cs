@@ -2,6 +2,8 @@
 using Diamond.Domain.Indicator;
 using Diamond.Domain.Models;
 using Diamond.Services.Indicator;
+using Diamond.Utils;
+using Diamond.Utils.BrokerExtention;
 using Newtonsoft.Json;
 using Skender.Stock.Indicators;
 using System;
@@ -34,11 +36,15 @@ namespace Diamond.Services.Strategy
                 }
             }
 
+            var basePath = @$"D:\00 - FindSymbol\";
+            var fileName = $"SupportResistance_{DateTime.Now.Date.ToString("yyyy-MM-dd")}";
+            JsonConvertor.WriteJsonData(reasonlist, fileName, basePath);
             string json = JsonConvert.SerializeObject(reasonlist);
             //var json = JsonSerializer.Serialize(reasonlist);
 
             return json;
         }
+               
 
         private SupportResistancePercentageDifference FindSymbols(List<IndicatorCandel> candles, IndicatorParameter indicatorParameter)
         {
@@ -122,10 +128,10 @@ namespace Diamond.Services.Strategy
                     {
                         list.Add(support);
                     }
-                    else
-                    {
-                        list.Add(support);
-                    }
+                    //else
+                    //{
+                    //    list.Add(support);
+                    //}
                 }
             }
 
